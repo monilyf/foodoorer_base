@@ -36,15 +36,15 @@ export class Auth extends Component {
       let user = await AsyncStorage.getItem('login_data');
       let parsed = JSON.parse(user);
 
-      if (user!=null)
+      if (parsed!=null)
         // this.state.isAuthenticated=true;
         this.props.navigation.dispatch(this.resetToAuth);
       else {
-        Alert.alert('Email or Password not valid');
+        alert('Email not valid');
         this.props.navigation.navigate(Routes.SignIn);
       }
     } catch (error) {
-      alert("You don't have account!");
+      // alert("You don't have account!");
       this.props.navigation.navigate(Routes.SignIn);
 
       //
