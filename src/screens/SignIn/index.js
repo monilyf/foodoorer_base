@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {KeyboardAvoidingView, SafeAreaView, Text, View,TouchableOpacity,Image} from 'react-native';
+import {KeyboardAvoidingView, SafeAreaView, Text, View,TouchableOpacity,Image, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './style';
 import OrSection from '../../component/OrSection'
@@ -7,6 +7,8 @@ import InputContainer from '../../component/InputContainer';
 import COLOR from '../../utils/Color'
 import SubmitButton from '../../component/SubmitButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {validation} from '../../utils/ValidationUtils'
+import Routes from '../../router/routes'
 
 export class SignIn extends Component {
   constructor(props) {
@@ -14,6 +16,7 @@ export class SignIn extends Component {
 
     this.state = {
       email: '',
+      emailError:''
     };
   }
   check_IsNull = () => {
@@ -27,9 +30,30 @@ export class SignIn extends Component {
     // alert('login  Successfully!', login_data);
     console.log('login_data from :', login_data);
 
-    this.props.navigation.navigate('Auth', {email: this.state.email});
+    this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
     return true;
   };
+
+  handleOnSubmit=()=>{
+    let emailError;
+    // let isEmailValidate = false;
+    // emailError = validation('email',this.state.email)
+    if(this.state.emailError!=null){
+      this.setState({
+        emailError:emailError,
+      });
+      alert(this.state.emailError)
+      // this.setState({email:''})
+      this.props.navigation.navigate(Routes.SignIn);
+    }
+    else{
+      // isEmailValidate = true;
+     
+        this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
+      return true;
+    }
+
+  }
 
   render(props) {
     return (
@@ -53,7 +77,7 @@ export class SignIn extends Component {
                 <InputContainer
                   iconName="email"
                   placeholder="Enter Email"
-                  onChangeText={text => this.setState({email: text})}
+                  onChangeText={text => this.setState({email: text,emailError:validation('email',this.state.email)})}
                 />
                 {this.state.isEmailvalidate ? (
                   <Text style={(styles.errorMsg, {color: 'green'})}>
@@ -65,7 +89,8 @@ export class SignIn extends Component {
 
                 <SubmitButton
                   onPress={() => {
-                    this.check_IsNull();
+                    // this.check_IsNull();
+                    this.handleOnSubmit()
                   }}
                   buttonText="Login"
                 />
