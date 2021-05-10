@@ -19,24 +19,14 @@ export class SignIn extends Component {
       emailError:''
     };
   }
-  check_IsNull = () => {
-    const {email} = this.state;
-    if (email == '') {
-      alert('please fill email ');
-      return false;
-    }
-    login_data = 'login';
-    AsyncStorage.setItem('login_data', JSON.stringify(login_data));
-    // alert('login  Successfully!', login_data);
-    console.log('login_data from :', login_data);
-
-    this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
-    return true;
-  };
+ 
 
   handleOnSubmit=()=>{
-   
-    if(this.state.emailError!=null){
+    if (this.state.email == '') {
+      alert('please fill email ');
+     
+    }
+    else if (this.state.emailError!=null){
      
       alert(this.state.emailError)
       this.props.navigation.navigate(Routes.SignIn);
