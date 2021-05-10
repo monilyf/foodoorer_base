@@ -35,22 +35,18 @@ export class SignIn extends Component {
   };
 
   handleOnSubmit=()=>{
-    let emailError;
-    // let isEmailValidate = false;
-    // emailError = validation('email',this.state.email)
+   
     if(this.state.emailError!=null){
-      this.setState({
-        emailError:emailError,
-      });
+     
       alert(this.state.emailError)
-      // this.setState({email:''})
       this.props.navigation.navigate(Routes.SignIn);
     }
     else{
-      // isEmailValidate = true;
-     
-        this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
-      return true;
+      login_data = 'login';
+      AsyncStorage.setItem('login_data', JSON.stringify(login_data));
+      console.log('login_data from :', login_data);
+  
+      this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
     }
 
   }
