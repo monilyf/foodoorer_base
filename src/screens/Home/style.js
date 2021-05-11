@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native'
-import COLOR from '../../utils/Color'
+import Color from '../../utils/Color'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:COLOR.WHITE,
+    backgroundColor:Color.WHITE,
     // marginTop: 10,
   },
   item: {
@@ -15,9 +15,9 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     borderRadius: 3,
-    borderColor: COLOR.LIME_GREEN,
+    borderColor: Color.LIME_GREEN,
     marginHorizontal: 16,
-    shadowColor: COLOR.BLACK,
+    shadowColor: Color.BLACK,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -30,13 +30,13 @@ const styles = StyleSheet.create({
   primaryText:{
     fontSize:16,
     // marginTop:7,
-    color:COLOR.DARK_CYAN,
+    color:Color.DARK_CYAN,
    
   },
   title: {
     fontSize: 18,
     fontWeight:'bold',
-    color:COLOR.DARK_CYAN,
+    color:Color.DARK_CYAN,
     // marginTop: 20,
     // width:'45%'
     // marginHorizontal:50

@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import SubmitButton from '../../component/SubmitButton'
+import {SubmitButton,Label} from '../../component'
 import Routes from '../../router/routes'
 import {CommonActions} from '@react-navigation/routers'
 
@@ -28,6 +28,7 @@ export class Home extends Component {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
         <Text> Home </Text>
+        <Label small>Authenticate user screen.</Label>
         <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
       </View>
     )

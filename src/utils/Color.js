@@ -14,6 +14,7 @@ const Color={
     PALE_VIOLET:'#D8B5FF',
     LIME_GREEN:'#edffec',
     ALICE_BLUE:'#f2f4f5',
+    TEXT_PRIMARY:'#f2f4f5',
     DARK_BLUE:'#182b56',
     BLUE_MAGENTA:'#6f6e92'
 }

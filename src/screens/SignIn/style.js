@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import COLOR from '../../utils/Color'
+import Color from '../../utils/Color'
 const styles = StyleSheet.create({
 
     container:{
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
           width:'100%', 
           paddingHorizontal:20,
           paddingVertical:20,
-          backgroundColor:COLOR.WHITE,
+          backgroundColor:Color.WHITE,
           borderRadius:12
       },
       welcomeText:{
@@ -28,18 +28,18 @@ const styles = StyleSheet.create({
       },
       infoText:{
           fontSize:14,
-          color:COLOR.DARK_GRAY,
+          color:Color.DARK_GRAY,
           marginBottom:12
       },
       btnName: {
         fontWeight: 'bold',
         fontSize: 16,
-        color:COLOR.WHITE,
+        color:Color.WHITE,
          paddingRight:50
       },
       btnPrimary: {
         flexDirection:'row',
-        backgroundColor: COLOR.DARK_MODERATE_BLUE,
+        backgroundColor: Color.DARK_MODERATE_BLUE,
         height: 50,
         width:325,
         borderRadius: 14,
