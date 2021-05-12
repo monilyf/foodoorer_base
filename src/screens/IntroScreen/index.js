@@ -24,7 +24,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Routes from '../../router/routes';
-import COLOR from '../../utils/Color';
+import Color from '../../utils/Color';
 
 
 
@@ -98,7 +98,7 @@ const AppIntroScreen = ({navigation}) => {
       <View
         style={{
           flex: 1,
-          backgroundColor:COLOR.WHITE,
+          backgroundColor:Color.WHITE,
           alignItems: 'center',
           justifyContent: 'space-around',
           paddingBottom: 100,

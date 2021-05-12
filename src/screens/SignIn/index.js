@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import {KeyboardAvoidingView, SafeAreaView, Text, View,TouchableOpacity,Image, Alert} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './style';
-import OrSection from '../../component/OrSection'
-import InputContainer from '../../component/InputContainer';
-import COLOR from '../../utils/Color'
-import SubmitButton from '../../component/SubmitButton';
+import Color from '../../utils/Color'
+import {InputContainer,OrSection,SubmitButton} from '../../component'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils'
 import Routes from '../../router/routes'
+import CommonStyle from '../../utils/CommonStyle'
 
 export class SignIn extends Component {
   constructor(props) {
@@ -22,13 +21,14 @@ export class SignIn extends Component {
  
 
   handleOnSubmit=()=>{
+    this.setState({emailError:validation('email',this.state.email)})
     if (this.state.email == '') {
       alert('please fill email ');
      
     }
     else if (this.state.emailError!=null){
      
-      alert(this.state.emailError)
+      // alert(this.state.emailError)
       this.props.navigation.navigate(Routes.SignIn);
     }
     else{
@@ -45,7 +45,7 @@ export class SignIn extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          colors={[COLOR.PALE_VIOLET, COLOR.LIGHT_ORANGE]}
+          colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={styles.linearGradient}>
@@ -63,15 +63,11 @@ export class SignIn extends Component {
                 <InputContainer
                   iconName="email"
                   placeholder="Enter Email"
-                  onChangeText={text => this.setState({email: text,emailError:validation('email',this.state.email)})}
+                  onChangeText={text => this.setState({email: text})}
                 />
-                {this.state.isEmailvalidate ? (
-                  <Text style={(styles.errorMsg, {color: 'green'})}>
-                    {this.state.emailError}
-                  </Text>
-                ) : (
-                  <Text style={styles.errorMsg}>{this.state.emailError}</Text>
-                )}
+              
+                  <Text style={CommonStyle.errorMsg}>{this.state.emailError}</Text>
+             
 
                 <SubmitButton
                   onPress={() => {

@@ -3,11 +3,11 @@ import { Alert, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './style'
 
-export class SubmitButton extends Component {
-    render(props) {
+const SubmitButton=(props)=> {
+    
         return (
           // <TouchableOpacity onPress={()=>Alert.alert('ed Successfully')}>
-          <TouchableOpacity onPress={this.props.onPress} style={{alignItems:'center'}}>
+          <TouchableOpacity onPress={props.onPress} style={{alignItems:'center'}}>
           <LinearGradient
           // colors={['#00d2ff', '#3a7bd5']}
           colors={['#00d2ff', '#182b56']}
@@ -17,7 +17,7 @@ export class SubmitButton extends Component {
      
   
           <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18}}>
-            {this.props.buttonText}
+            {props.buttonText}
           </Text>
   
         </LinearGradient>
@@ -25,7 +25,7 @@ export class SubmitButton extends Component {
 
           
         )
-    }
+    
 }
 
 export default SubmitButton
