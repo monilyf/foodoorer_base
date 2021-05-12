@@ -36,7 +36,7 @@ const InputContainer = (props) => {
             name={props.errorIcon} //"person-outline"
             color="#000"
             size={20}
-            s
+            
             style={styles.errorIcon}
           />
         </TouchableOpacity>

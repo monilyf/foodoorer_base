@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
       btnName: {
         fontWeight: 'bold',
         fontSize: 16,
-        color:Color.WHITE,
+        color:Color.BLACK,
          paddingRight:50
       },
       btnPrimary: {

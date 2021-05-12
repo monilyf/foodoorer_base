@@ -3,7 +3,7 @@ import {KeyboardAvoidingView, SafeAreaView, Text, View,TouchableOpacity,Image, A
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './style';
 import Color from '../../utils/Color'
-import {InputContainer,OrSection,SubmitButton} from '../../component'
+import {InputContainer,OrSection,SubmitButton,Label,SocialButton} from '../../component'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils'
 import Routes from '../../router/routes'
@@ -55,10 +55,14 @@ export class SignIn extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
               <View style={styles.loginContainer}>
-                <Text style={styles.welcomeText}>Welcome</Text>
-                <Text style={styles.infoText}>
+                {/* <Text style={styles.welcomeText}>Welcome</Text> */}
+                <Label color={Color.BLACK} xxlarge>Welcome</Label>
+                {/* <Text style={styles.infoText}>
                   Enter your email id to proceed
-                </Text>
+                </Text> */}
+                <Label color={Color.DARK_GRAY} mt={5} small>
+                  Enter your email id to proceed
+                </Label>
 
                 <InputContainer
                   iconName="email"
@@ -66,7 +70,8 @@ export class SignIn extends Component {
                   onChangeText={text => this.setState({email: text})}
                 />
               
-                  <Text style={CommonStyle.errorMsg}>{this.state.emailError}</Text>
+                  {/* <Text style={CommonStyle.errorMsg}>{this.state.emailError}</Text> */}
+                  <Label color={Color.ERROR} ms={20} xsmall>{this.state.emailError}</Label>
              
 
                 <SubmitButton
@@ -74,20 +79,22 @@ export class SignIn extends Component {
                     // this.check_IsNull();
                     this.handleOnSubmit()
                   }}
-                  buttonText="Login"
+                  buttonText="Sign In"
                 />
                 <OrSection/>
-             
+{/*              
                   <TouchableOpacity style={styles.btnPrimary}>
                     <Image style={styles.btnImage} source={require('../../assets/images/facebook.png')}/>
                     <Text style={styles.btnName}>Sign In with FaceBook</Text>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
+                  <SocialButton buttonText='Sign In with Facebook' backgroundColor='red' image={require('../../assets/images/facebook.png')}/>
                   <View style={{margin:5}}></View>
-                  <TouchableOpacity style={styles.btnPrimary}>
+                  {/* <TouchableOpacity style={styles.btnPrimary}>
                     <Image style={styles.btnImage} source={require('../../assets/images/google.png')}/>
                     <Text style={styles.btnName}>Sign In with Google</Text>
-                  </TouchableOpacity>
-              
+                  </TouchableOpacity> */}
+                  <SocialButton buttonText='Sign In with Google' image={require('../../assets/images/google.png')}/>
+                  
               </View>
             </View>
           </KeyboardAvoidingView>

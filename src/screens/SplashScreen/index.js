@@ -36,7 +36,7 @@ class SplashScreen extends Component  {
   }
 
   checkAuthentication = async () => {
-    let authenticated = await AsyncStorage.getItem('registered_data');
+    let authenticated = await AsyncStorage.getItem('login_data');
     console.log('checkAuth Authenticated val - ', authenticated);
     if (authenticated != null) {
       // this.setState({ isAuthenticated: true });
