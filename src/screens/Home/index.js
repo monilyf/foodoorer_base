@@ -27,8 +27,8 @@ export class Home extends Component {
   render() {
     return (
       <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Text> Home </Text>
-        <Label  color='black' mt={20} bolder >Authenticate user screen.</Label>
+        {/* <Text> Home </Text> */}
+        <Label  color='black' mt={20} bolder >Home screen.</Label>
         <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
         <RoundButton mt={20} backgroundColor='#a5a5a5'>Hello I'm Round Button</RoundButton>
       </View>

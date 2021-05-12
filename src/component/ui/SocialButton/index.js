@@ -17,3 +17,8 @@ const SocialButton = (props) => {
 export default SocialButton;
 
 
+{/*              
+                  <TouchableOpacity style={styles.btnPrimary}>
+                    <Image style={styles.btnImage} source={require('../../assets/images/facebook.png')}/>
+                    <Text style={styles.btnName}>Sign In with FaceBook</Text>
+                  </TouchableOpacity> */}

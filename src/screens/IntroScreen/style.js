@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import {colors  } from "../../consts/color";
+import Color from "../../utils/Color";
 export const styles=StyleSheet.create({
    
     container:{
@@ -7,7 +7,7 @@ export const styles=StyleSheet.create({
         flex:1,
         justifyContent:'center',
         alignItems:'center',
-        backgroundColor:'white'
+        backgroundColor:Color.WHITE
     },
     logo:{
        width:200  ,

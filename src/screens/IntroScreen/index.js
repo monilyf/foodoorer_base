@@ -18,13 +18,14 @@ import {
 
 //import AppIntroSlider to use it
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 //import AppIntroSlider to use it
 // import Icon from 'react-native-ionicons';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Routes from '../../router/routes';
 import Color from '../../utils/Color';
+import {Label} from '../../component'
 
 
 
@@ -70,7 +71,7 @@ const AppIntroScreen = ({navigation}) => {
           name="arrow-right"
           color="rgba(255, 255, 255, .9)"
           size={30}
-          style={{color: 'green'}}
+          style={{color: 'red'}}
         />
       </View>
     );
@@ -103,15 +104,18 @@ const AppIntroScreen = ({navigation}) => {
           justifyContent: 'space-around',
           paddingBottom: 100,
         }}>
-        <Text style={styles.introTitleStyle}>
+        {/* <Text style={styles.introTitleStyle}>
           {item.title}
-        </Text>
+        </Text> */}
+        <Label style={styles.introTitleStyle}>{item.title}</Label>
         <Image
           style={styles.introImageStyle}
           source={item.image} />
-        <Text style={styles.introTextStyle}>
+        {/* <Text style={styles.introTextStyle}>
           {item.text}
-        </Text>
+        </Text> */}
+        <Label style={styles.introTextStyle}>{item.text}</Label>
+
       </View>
     );
   };

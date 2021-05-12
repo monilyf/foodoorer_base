@@ -82,17 +82,10 @@ export class SignIn extends Component {
                   buttonText="Sign In"
                 />
                 <OrSection/>
-{/*              
-                  <TouchableOpacity style={styles.btnPrimary}>
-                    <Image style={styles.btnImage} source={require('../../assets/images/facebook.png')}/>
-                    <Text style={styles.btnName}>Sign In with FaceBook</Text>
-                  </TouchableOpacity> */}
+
                   <SocialButton buttonText='Sign In with Facebook' backgroundColor='red' image={require('../../assets/images/facebook.png')}/>
                   <View style={{margin:5}}></View>
-                  {/* <TouchableOpacity style={styles.btnPrimary}>
-                    <Image style={styles.btnImage} source={require('../../assets/images/google.png')}/>
-                    <Text style={styles.btnName}>Sign In with Google</Text>
-                  </TouchableOpacity> */}
+                
                   <SocialButton buttonText='Sign In with Google' image={require('../../assets/images/google.png')}/>
                   
               </View>
