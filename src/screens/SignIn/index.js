@@ -55,11 +55,9 @@ export class SignIn extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
               <View style={styles.loginContainer}>
-                {/* <Text style={styles.welcomeText}>Welcome</Text> */}
+              {/* <Text style={styles.welcomeText}>Welcome</Text> */}
                 <Label color={Color.BLACK} xxlarge>Welcome</Label>
-                {/* <Text style={styles.infoText}>
-                  Enter your email id to proceed
-                </Text> */}
+                
                 <Label color={Color.DARK_GRAY} mt={5} small>
                   Enter your email id to proceed
                 </Label>
@@ -67,6 +65,7 @@ export class SignIn extends Component {
                 <InputContainer
                   iconName="email"
                   placeholder="Enter Email"
+                  iconColor={Color.BLACK}
                   onChangeText={text => this.setState({email: text})}
                 />
               

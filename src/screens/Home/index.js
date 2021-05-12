@@ -30,7 +30,7 @@ export class Home extends Component {
         {/* <Text> Home </Text> */}
         <Label  color='black' mt={20} bolder >Home screen.</Label>
         <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
-        <RoundButton mt={20} backgroundColor='#a5a5a5'>Hello I'm Round Button</RoundButton>
+        <RoundButton mt={20} backgroundColor='#a5a5a5' xsmall>Hello I'm Round Button</RoundButton>
       </View>
     )
   }

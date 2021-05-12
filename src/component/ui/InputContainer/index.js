@@ -10,6 +10,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconError from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEye from 'react-native-vector-icons/Octicons';
 import styles from './style'
+import Color from '../../../utils/Color'
 
 const InputContainer = (props) => {
   return (
@@ -17,7 +18,7 @@ const InputContainer = (props) => {
       <View style={styles.inputContainer}>
         <Icon
           name={props.iconName} //"person-outline"
-          color="#000"
+          color={props.iconColor}
           size={20}
           style={styles.inputIcon}
         />
@@ -34,7 +35,7 @@ const InputContainer = (props) => {
         <TouchableOpacity onPress={props.onToggle}>
           <IconError
             name={props.errorIcon} //"person-outline"
-            color="#000"
+            color={props.iconColor}
             size={20}
             
             style={styles.errorIcon}
@@ -43,7 +44,7 @@ const InputContainer = (props) => {
         <TouchableOpacity onPress={props.onToggle}>
           <IconEye
             name={props.extraIconName} //"person-outline"
-            color="#000"
+            color={props.iconColor}
             size={20}
             style={styles.extraIcon}
           />

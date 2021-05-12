@@ -2,10 +2,10 @@ import React from 'react';
 import {
     View,
     TouchableHighlight,
-    // TouchableOpacity,
-    Text
+    TouchableOpacity,
+    Text,
 } from 'react-native';
-import Ripple from '../Ripple';
+
 import COLOR from "../../../utils/Color";
 //import {fontXSmall, fontSmall, fontNormal, fontLarge, fontXLarge} from 'src/utils/theme';
 import Theme from "../../../utils/ThemeUtils"
@@ -64,12 +64,13 @@ class RoundButton extends React.Component {
         return (
             <TouchableHighlight style={btnWholeStyles}>
                 <View>
-                    <Ripple style={btnContainerStylesArray} rippleContainerBorderRadius={30}
+                    <TouchableOpacity style={btnContainerStylesArray} 
+                    // rippleContainerBorderRadius={30}
                             onPress={this.onClick}>
                         <Text style={btnTextStylesArray}>
                             {this.props.children.toUpperCase()}
                         </Text>
-                    </Ripple>
+                    </TouchableOpacity>
                 </View>
             </TouchableHighlight>
         );
