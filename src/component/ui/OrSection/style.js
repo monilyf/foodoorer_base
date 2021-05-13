@@ -9,7 +9,9 @@ const styles = StyleSheet.create({
     },
     line: { 
         height: 1,
-        width:'43%',
-        backgroundColor: '#a5a5a5' },
+        width:'42%',
+        backgroundColor: '#a5a5a5',
+     },
+
 });
 export default styles;

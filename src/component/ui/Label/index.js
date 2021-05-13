@@ -52,6 +52,7 @@ class Label extends Component{
             marginBottom: this.props.mb,
             marginStart: this.props.ms,
             marginEnd: this.props.me,
+            marginHorizontal: this.props.mh,
             textAlign: this.props.align,
         });
         stylesArray.push(this.props.style);
@@ -83,6 +84,7 @@ Label.defaultProps = {
     mb: 0,
     ms: 0,
     me: 0,
+    mh:0,
     singleLine: false
 };
 Label.propTypes = {
@@ -103,6 +105,7 @@ Label.propTypes = {
     mb: PropTypes.number,
     ms: PropTypes.number,
     me: PropTypes.number,
+    mh: PropTypes.number,
     align: PropTypes.string,
     singleLine: PropTypes.bool
 };

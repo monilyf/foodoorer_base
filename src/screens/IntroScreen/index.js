@@ -21,7 +21,8 @@ import AppIntroSlider from 'react-native-app-intro-slider';
 //import AppIntroSlider to use it
 // import Icon from 'react-native-ionicons';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import EntypoIcon from 'react-native-vector-icons/Entypo'
 import Routes from '../../router/routes';
 import Color from '../../utils/Color';
 import {Label} from '../../component'
@@ -63,14 +64,15 @@ const AppIntroScreen = ({navigation}) => {
 
   const RenderNextButton = () => {
     return (
-      <View style={styles.buttonCircle}>
+       <View>  
+       {/* // style={styles.buttonCircle} */}
       {/* <Text style={{color: '#28388f',fontSize:18,marginTop:10}}>Next</Text> */}
         
-        <FeatherIcon
-          name="arrow-right"
+        <Icon
+          name="chevron-right"
           color="rgba(255, 255, 255, .9)"
           size={30}
-          style={{color: 'red'}}
+          style={{color: Color.DARK_BLUE}}
         />
       </View>
     );
@@ -79,14 +81,16 @@ const AppIntroScreen = ({navigation}) => {
   const RenderDoneButton = () => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate(Routes.SignIn)} >
-      <View style={styles.buttonCircle}>
+      <View >
+      {/* style={styles.buttonCircle} */}
       {/* <FeatherIcon name='eye-off' size={20} style={styles.showIcon}  /> */}
       
-        <FeatherIcon
-          name="check"
+        <EntypoIcon
+          name="login"
           color="rgba(255, 255, 255, .9)"
           size={30}
-          style={{color: 'green'}}
+
+          style={{color: Color.DARK_BLUE,fontWeight:'bolder'}}
         />
       </View>
       </TouchableOpacity>
@@ -97,7 +101,7 @@ const AppIntroScreen = ({navigation}) => {
     return (
       <View
         style={{
-          flex: 1,
+          flex: 1,                
           backgroundColor:Color.WHITE,
           alignItems: 'center',
           justifyContent: 'space-around',

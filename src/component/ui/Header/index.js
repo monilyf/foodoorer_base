@@ -7,9 +7,7 @@ export class Header extends Component {
     render(props) {
         return (
             <View style={styles.container}>
-            {/* <Image source={require('../../assets/images/Logo-porter.png')}
-                style={styles.logo}
-            /> */}
+          
             </View>
         )
     }

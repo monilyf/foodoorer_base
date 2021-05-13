@@ -16,7 +16,8 @@ const Color={
     ALICE_BLUE:'#f2f4f5',
     TEXT_PRIMARY:'#f2f4f5',
     DARK_BLUE:'#182b56',
-    BLUE_MAGENTA:'#6f6e92'
+    BLUE_MAGENTA:'#6f6e92',
+    SUCCESS:'#00FF00'
 }
 
 export default Color;

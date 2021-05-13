@@ -9,6 +9,8 @@ import {
 import Routes from '../../router/routes';
 import styles from "./style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Label } from '../../component';
+import Color from '../../utils/Color';
 
 class SplashScreen extends Component  {
 
@@ -69,7 +71,7 @@ render(){
             style={{ width: '100%', height: '100%', resizeMode: 'contain' }} />
         </View> */}
         <View style={styles.footer}>
-          <Text style={styles.footerText}>By Team{"\n"}Foodoorer</Text>
+          <Label color={Color.BLUE_MAGENTA}>{' '}By Team{"\n"}Foodoorer</Label>
         </View>
        
       </View>
