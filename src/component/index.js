@@ -5,6 +5,8 @@ import Label from './ui/Label';
 import Ripple from './ui/Ripple';
 import RoundButton from './ui/RoundButton';
 import SocialButton from './ui/SocialButton'
+import FloatingActionButton from './ui/FloatingActionButton';
+import Loader from './ui/Loader'
 
 export {
     InputContainer,
@@ -14,4 +16,6 @@ export {
     Ripple,
     RoundButton,
     SocialButton,
+    FloatingActionButton,
+    Loader,
 }

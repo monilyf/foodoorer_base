@@ -1,5 +1,4 @@
-// React Native App Intro Slider using AppIntroSlider
-// https://aboutreact.com/react-native-app-intro-slider/
+
 // Intro slider with Custom Buttons
 
 // import React in our code

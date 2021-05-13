@@ -3,6 +3,7 @@ import {Alert, Image, Text, View} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Routes from '../router/routes'
 import { CommonActions } from '@react-navigation/routers';
+import {Loader} from '../component'
 
 export class Auth extends Component {
   constructor(props) {
@@ -62,6 +63,7 @@ export class Auth extends Component {
           alignItems: 'center',
           backgroundColor: '#fff',
         }}>
+        <Loader visible={true}/>
         {/* <Image source={require('../assets/images/error.jpg')}/> */}
       </View>
     );

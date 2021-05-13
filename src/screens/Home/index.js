@@ -1,9 +1,10 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import React, { Component } from 'react'
 import { Text, View } from 'react-native'
-import {SubmitButton,Label,RoundButton} from '../../component'
+import {SubmitButton,Label,RoundButton,FloatingActionButton} from '../../component'
 import Routes from '../../router/routes'
 import {CommonActions} from '@react-navigation/routers'
+import Color from '../../utils/Color'
 
 export class Home extends Component {
 
@@ -30,7 +31,8 @@ export class Home extends Component {
         {/* <Text> Home </Text> */}
         <Label  color='black' mt={20} bolder >Home screen.</Label>
         <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
-        <RoundButton mt={20} backgroundColor='#a5a5a5' xsmall>Hello I'm Round Button</RoundButton>
+        <RoundButton mt={20} backgroundColor='#a5a5a5' btn_lg textColor={Color.ALICE_BLUE} >Hello I'm Round Button</RoundButton>
+        <FloatingActionButton color={Color.BLUE_MAGENTA} icon='architecture' left ms={50} iconColor='#a5fd07' iconSize={40}/>
       </View>
     )
   }
