@@ -7,6 +7,7 @@ import SocialButton from './ui/SocialButton'
 import FloatingActionButton from './ui/FloatingActionButton';
 import Loader from './ui/Loader'
 import Header from './ui/Header'
+import ModelView from './ui/ModelView'
 
 export {
     InputContainer,
@@ -18,4 +19,5 @@ export {
     FloatingActionButton,
     Loader,
     Header,
+    ModelView,
 }

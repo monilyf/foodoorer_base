@@ -1,10 +1,12 @@
 import {StyleSheet} from 'react-native';
+import ThemeUtils from '../../../utils/ThemeUtils';
 
 const styles = StyleSheet.create({
     btnPrimary: {
         // backgroundColor: 'yellow',
         // height: 50,
         width:325,
+// width:ThemeUtils.relativeWidth(80),
         borderRadius: 14,
         justifyContent: 'center',
         alignItems: 'center',
