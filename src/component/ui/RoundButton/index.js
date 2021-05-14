@@ -5,32 +5,33 @@ import {
     TouchableOpacity,
     Text,
 } from 'react-native';
-import Ripple from "../Ripple"
+
 import COLOR from "../../../utils/Color";
 //import {fontXSmall, fontSmall, fontNormal, fontLarge, fontXLarge} from 'src/utils/theme';
 import Theme from "../../../utils/ThemeUtils"
 import PropTypes from 'prop-types';
 
-class RoundButton extends React.Component {
+const RoundButton = (props) => {
 
     onClick = () => {
-        if (this.props.click)
-            this.props.click();
+        if (props.onPress){
+            props.onPress();
+        }
     };
 
-    render() {
+    
         let btnContainerStylesArray = [];
         let btnTextStylesArray = [];
-        if (this.props.btn_xs) {
+        if (props.btn_xs) {
             btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 5});
             btnTextStylesArray.push({fontSize: Theme.fontXSmall});
-        } else if (this.props.btn_sm) {
+        } else if (props.btn_sm) {
             btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 7});
             btnTextStylesArray.push({fontSize: Theme.fontSmall});
-        } else if (this.props.btn_lg) {
+        } else if (props.btn_lg) {
             btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 9});
             btnTextStylesArray.push({fontSize: Theme.fontLarge - 2});
-        } else if (this.props.btn_xl) {
+        } else if (props.btn_xl) {
             btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 10});
             btnTextStylesArray.push({fontSize: Theme.fontXLarge - 2});
         } else {
@@ -39,43 +40,42 @@ class RoundButton extends React.Component {
         }
         let btnWholeStyles = [];
         btnWholeStyles.push({
-            marginTop: this.props.mt,
-            marginBottom: this.props.mb,
-            marginStart: this.props.ms,
-            marginEnd: this.props.me,
+            marginTop: props.mt,
+            marginBottom: props.mb,
+            marginStart: props.ms,
+            marginEnd: props.me,
         });
-        if (this.props.btn_block) {
+        if (props.btn_block) {
             btnWholeStyles.push({
                 alignSelf: 'stretch'
             });
         }
 
-        let borderColor = this.props.borderColor ? this.props.borderColor : this.props.backgroundColor;
+        let borderColor = props.borderColor ? props.borderColor : props.backgroundColor;
         btnContainerStylesArray.push({
-            backgroundColor: this.props.backgroundColor,
+            backgroundColor: props.backgroundColor,
             borderColor: borderColor,
             alignItems: 'center',
-            borderRadius: this.props.border_radius,
+            borderRadius: props.border_radius,
             borderWidth: 1,
             borderBottomWidth: 0,
         });
-        btnTextStylesArray.push({color: this.props.textColor});
+        btnTextStylesArray.push({color: props.textColor});
 
         return (
             <TouchableHighlight style={btnWholeStyles}>
                 <View>
-                    <Ripple style={btnContainerStylesArray} 
-                    rippleContainerBorderRadius={30}
-                            onPress={this.onClick}>
+                    <TouchableOpacity style={btnContainerStylesArray} 
+                            onPress={onClick}>
                         <Text style={btnTextStylesArray}>
-                            {this.props.children.toUpperCase()}
+                            {props.children.toUpperCase()}
                         </Text>
-                    </Ripple>
+                    </TouchableOpacity>
                 </View>
             </TouchableHighlight>
         );
     }
-}
+
 
 
 RoundButton.defaultProps = {

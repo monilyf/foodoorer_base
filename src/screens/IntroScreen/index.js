@@ -90,7 +90,7 @@ const AppIntroScreen = ({navigation}) => {
           color="rgba(255, 255, 255, .9)"
           size={30}
 
-          style={{color: Color.DARK_BLUE,fontWeight:'bolder'}}
+          style={{color: Color.DARK_BLUE,fontWeight:'bolder'}} 
         />
       </View>
       </TouchableOpacity>
@@ -145,7 +145,7 @@ export default AppIntroScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Color.WHITE,
     alignItems: 'center',
     padding: 10,
     justifyContent: 'center',

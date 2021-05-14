@@ -1,52 +1,50 @@
 import React, { Component } from 'react';
-import {circleStyle} from "../../../utils/ThemeUtils";
+import { circleStyle } from '../../../utils/ThemeUtils';
 import Color from '../../../utils/Color';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Ripple from '../Ripple';
-import PropTypes from 'prop-types' ;
+import PropTypes from 'prop-types';
+import { TouchableOpacity } from 'react-native';
 
-
-class FloatingActionButton extends React.Component {
+const FloatingActionButton = (props) => {
     onClick = () => {
-        if (this.props.click)
-            this.props.click();
+        if (props.onPress){ 
+        props.onPress();
+        }
     };
 
-    render() {
-        let stylesArray = [];
+    let stylesArray = [];
 
-        if (this.props.left)
-            stylesArray.push({alignSelf: 'flex-start'});
-        else if (this.props.right)
-            stylesArray.push({alignSelf: 'flex-end'});
-        else if (this.props.center)
-            stylesArray.push({alignSelf: 'center'});
+    if (props.left) stylesArray.push({ alignSelf: 'flex-start' });
+    else if (props.right) stylesArray.push({ alignSelf: 'flex-end' });
+    else if (props.center) stylesArray.push({ alignSelf: 'center' });
 
-        stylesArray.push({
-            backgroundColor: this.props.color,
-            height: this.props.size,
-            width: this.props.size,
-            marginTop: this.props.mt,
-            marginBottom: this.props.mb,
-            marginStart: this.props.ms,
-            marginEnd: this.props.me,
-        });
+    stylesArray.push({
+        backgroundColor: props.color,
+        height: props.size,
+        width: props.size,
+        marginTop: props.mt,
+        marginBottom: props.mb,
+        marginStart: props.ms,
+        marginEnd: props.me,
+    });
 
-        stylesArray.push(this.props.style);
-        return (
-            <Ripple style={[circleStyle, stylesArray, {
-                alignItems: 'center',
-                justifyContent: 'center',
-                elevation: 10
-            }]} rippleContainerBorderRadius={30} onPress={this.onClick}>
-                <Icon name={this.props.icon}
-                      size={this.props.iconSize}
-                      color={this.props.iconColor}/>
-            </Ripple>
-
-        );
-    }
-}
+    stylesArray.push(props.style);
+    return (
+        <TouchableOpacity
+            style={[
+                circleStyle,
+                stylesArray,
+                {
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    elevation: 10,
+                },
+            ]}
+            onPress={onClick}>
+            <Icon name={props.icon} size={props.iconSize} color={props.iconColor} />
+        </TouchableOpacity>
+    );
+};
 
 FloatingActionButton.defaultProps = {
     size: 50,
@@ -60,7 +58,7 @@ FloatingActionButton.defaultProps = {
     me: 0,
     left: false,
     right: false,
-    center: false
+    center: false,
 };
 
 FloatingActionButton.propTypes = {
@@ -75,8 +73,7 @@ FloatingActionButton.propTypes = {
     me: PropTypes.number,
     left: PropTypes.bool,
     right: PropTypes.bool,
-    center: PropTypes.bool
+    center: PropTypes.bool,
 };
 
 export default FloatingActionButton;
-

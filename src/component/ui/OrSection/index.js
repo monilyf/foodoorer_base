@@ -9,8 +9,8 @@ const OrSection = () => {
         <View style={styles.container}>
             <View style={styles.line}></View>
             {/* <Text style={{marginHorizontal: 5, fontWeight: 'bold'}}>OR</Text> */}
-            <Label bolder  color={Color.BLACK} ms={5} me={5} xsmall>OR</Label>
-            <View style={styles.line}></View>
+            <Label bolder  color={Color.BLACK} ph={5} xsmall>OR</Label>
+            <View style={styles.line}></View> 
           </View>
     )
 }

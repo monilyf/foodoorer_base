@@ -4,66 +4,66 @@ import Color from '../../../utils/Color';
 import Theme from '../../../utils/ThemeUtils';
 import PropTypes from 'prop-types';
 
-class Label extends Component{
+const Label = (props) => {
 
     onClick = () => {
-        if (this.props.onPress)
-            this.props.onPress();
+        if (props.onPress)
+            props.onPress();
     };
 
-    render() {
+    
         let stylesArray = [];
-        if (this.props.xxlarge)
+        if (props.xxlarge)
             stylesArray.push({ fontSize: Theme.fontXXLarge });
-        else if (this.props.xlarge)
+        else if (props.xlarge)
             stylesArray.push({ fontSize: Theme.fontXLarge });
-        else if (this.props.large)
+        else if (props.large)
             stylesArray.push({ fontSize: Theme.fontLarge });
-        else if (this.props.normal)
+        else if (props.normal)
             stylesArray.push({ fontSize: Theme.fontNormal });
-        else if (this.props.small)
+        else if (props.small)
             stylesArray.push({ fontSize: Theme.fontSmall });
-        else if (this.props.xsmall)
+        else if (props.xsmall)
             stylesArray.push({ fontSize: Theme.fontXSmall });
         else
             stylesArray.push({ fontSize: Theme.fontNormal });
 
-        if (this.props.bold)
+        if (props.bold)
             stylesArray.push({ fontWeight: "500" });
-        else if (this.props.bolder)
+        else if (props.bolder)
             stylesArray.push({ fontWeight: "bold" });
-        else if (this.props.light)
+        else if (props.light)
             stylesArray.push({ fontWeight: "400" });
-        else if (this.props.lighter)
+        else if (props.lighter)
             stylesArray.push({ fontWeight: "200" });
         else
             stylesArray.push({ fontWeight: "normal" });
 
-        if (this.props.roboto_medium)
+        if (props.roboto_medium)
             stylesArray.push({ fontFamily: "Roboto-Medium" });
-        else if (this.props.roboto_regular)
+        else if (props.roboto_regular)
             stylesArray.push({ fontFamily: "Roboto-Regular" });
         else
             stylesArray.push({ fontFamily: "Roboto-Regular" });
 
         stylesArray.push({
-            color: this.props.color,
-            marginTop: this.props.mt,
-            marginBottom: this.props.mb,
-            marginStart: this.props.ms,
-            marginEnd: this.props.me,
-            marginHorizontal: this.props.mh,
-            textAlign: this.props.align,
+            color: props.color,
+            marginTop: props.mt,
+            marginBottom: props.mb,
+            marginStart: props.ms,
+            marginEnd: props.me,
+            paddingHorizontal: props.ph,
+            textAlign: props.align,
         });
-        stylesArray.push(this.props.style);
+        stylesArray.push(props.style);
         return (
-            <Text numberOfLines={this.props.singleLine ? 1 : null} style={stylesArray}
-                onPress={this.props.onPress ? this.onClick : null}>
-                {this.props.children}
+            <Text numberOfLines={props.singleLine ? 1 : null} style={stylesArray}
+                onPress={props.onPress ? onClick : null}>
+                {props.children}
             </Text>
         );
     }
-}
+
 
 Label.defaultProps = {
     xsmall: false,
@@ -84,7 +84,7 @@ Label.defaultProps = {
     mb: 0,
     ms: 0,
     me: 0,
-    mh:0,
+    ph:0,
     singleLine: false
 };
 Label.propTypes = {
@@ -105,7 +105,7 @@ Label.propTypes = {
     mb: PropTypes.number,
     ms: PropTypes.number,
     me: PropTypes.number,
-    mh: PropTypes.number,
+    ph: PropTypes.number,
     align: PropTypes.string,
     singleLine: PropTypes.bool
 };
