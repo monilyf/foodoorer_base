@@ -28,6 +28,14 @@ const Label = (props) => {
         else
             stylesArray.push({ fontSize: Theme.fontNormal });
 
+        if (props.border){
+            stylesArray.push({borderBottomWidth:2})
+        }
+        // else{
+        //     stylesArray.push({borderBottomWidth:0})
+
+        // }
+
         if (props.bold)
             stylesArray.push({ fontWeight: "500" });
         else if (props.bolder)
@@ -54,6 +62,7 @@ const Label = (props) => {
             marginEnd: props.me,
             paddingHorizontal: props.ph,
             textAlign: props.align,
+            border:props.border,
         });
         stylesArray.push(props.style);
         return (
@@ -85,7 +94,8 @@ Label.defaultProps = {
     ms: 0,
     me: 0,
     ph:0,
-    singleLine: false
+    singleLine: false,
+    border:false,
 };
 Label.propTypes = {
     xsmall: PropTypes.bool,
@@ -107,6 +117,7 @@ Label.propTypes = {
     me: PropTypes.number,
     ph: PropTypes.number,
     align: PropTypes.string,
-    singleLine: PropTypes.bool
+    singleLine: PropTypes.bool,
+    border:PropTypes.bool
 };
 export default Label;

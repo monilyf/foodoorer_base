@@ -10,7 +10,7 @@ import {
   LogBox,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from './style';
+import styles from '../SignIn/style';
 import Color from '../../utils/Color';
 import {
   InputContainer,
@@ -19,7 +19,6 @@ import {
   Label,
   SocialButton,
   ToastMessage,
-  TabNav,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
@@ -27,45 +26,46 @@ import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
 // import Toast from 'react-native-toast-message'
 
-export class SignIn extends Component {
+export class SignUp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+        name:'',
+        nameError:'',
       email: '',
       emailError: '',
-      password:'',
-      passwordError:'',
+      phone:'',
+      phoneError:'',
       showToast: false,
     };
   }
 
  
-
   handleOnSubmit = () => {
-    this.setState(
-      {emailError: validation('email', this.state.email), showToast: true,
-      passwordError: validation('password', this.state.password)
-    },
-      () => {
-        setTimeout(() => {
-          this.setState({showToast: false});
-        }, 2500);
-      },
-    );
-    if (this.state.email == '') {
-      alert('please fill email ');
-    } else if (this.state.emailError != null) {
-      // alert(this.state.emailError)
-      this.props.navigation.navigate(Routes.SignIn);
-    } else {
-      login_data = 'login';
-      AsyncStorage.setItem('login_data', JSON.stringify(login_data));
-      console.log('login_data from :', login_data);
+   
+    let emailError, nameError, phoneError;
+    let isValide = true;
 
-      this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
+    nameError = validation('name', this.state.name);
+    emailError = validation('email', this.state.email);
+    phoneError = validation('phone', this.state.phone);
+    
+    if(nameError!=null || emailError!=null || phoneError!=null){
+        console.log('errors ')
+        this.setState({
+            nameError:nameError,
+            emailError:emailError,
+            phoneError:phoneError,
+            showToast:true
+        },() => {
+            setTimeout(() => {
+              this.setState({showToast: false});
+            }, 2500);
+          },)
     }
-  };
+  
+}
 
   render(props) {
     return (
@@ -80,16 +80,15 @@ export class SignIn extends Component {
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
-              
+             
               <View style={styles.loginContainer}>
-              {/* <TabNav/> */}
               <View style={styles.tabScreen}>
-        <Label bolder color={Color.DARK_MODERATE_BLUE} border >Sign In</Label>
-        <Label bolder color={Color.DARK_BLUE} >Sign Up</Label>
+        <Label bolder color={Color.DARK_MODERATE_BLUE} >Sign In</Label>
+        <Label bolder color={Color.DARK_BLUE} border>Sign Up</Label>
         {/* <View></View> */}
       </View>
                 <Label color={Color.BLACK} xlarge>
-                  Welcome
+                  Welcome to all
                 </Label>
 
                 <Label color={Color.DARK_GRAY} mt={5} small>
@@ -97,54 +96,45 @@ export class SignIn extends Component {
                 </Label>
 
                 <InputContainer
+                  iconName="person"
+                  placeholder="Enter Your Name"
+                  iconColor={Color.BLACK}
+                  onChangeText={text => this.setState({name: text})}
+                />
+
+                <InputContainer
                   iconName="email"
                   placeholder="Enter Email"
                   iconColor={Color.BLACK}
                   onChangeText={text => this.setState({email: text})}
                 />
-                <InputContainer
-                  iconName="lock"
-                  placeholder="Enter Password"
-                  iconColor={Color.BLACK}
-                  onChangeText={text => this.setState({passwod: text})}
-                />
 
-             
+<InputContainer
+                  iconName="phone"
+                  placeholder="Enter Mobile Number"
+                  iconColor={Color.BLACK}
+                  onChangeText={text => this.setState({phone: text})}
+                />
 
                 <SubmitButton
                   onPress={() => {
                     // this.check_IsNull();
                     this.handleOnSubmit();
                   }}
-                  buttonText="Sign In"
+                  buttonText="Sign Up"
                 />
-                <OrSection />
-
-                <SocialButton
-                  buttonText="Sign In with Facebook"
-                  backgroundColor="red"
-                  image={require('../../assets/images/facebook.png')}
-                />
-                <View style={{margin: 5}}></View>
-
-                <SocialButton
-                  buttonText="Sign In with Google"
-                  image={require('../../assets/images/google.png')}
-                />
-               
-                  <TouchableOpacity style={{flexDirection:'row',justifyContent:'center'}} onPress={()=>this.props.navigation.navigate(Routes.SignUp)}>
+                <TouchableOpacity style={{flexDirection:'row',justifyContent:'center'}} onPress={()=>this.props.navigation.navigate(Routes.SignIn)}>
                     <Label
                       mt={15}
                       color={Color.BLUE_MAGENTA}
                       small>
-                      Don't have an account?{' '}
+                      Already have an account?{' '}
                     </Label>
                     <Label  color={Color.DARK_BLUE}
                       small mt={15}>
-                      SIGN UP
+                      SIGN IN
                     </Label>
                   </TouchableOpacity>
-                
               </View>
             </View>
             <View style={{marginVertical: 30}}>
@@ -161,4 +151,4 @@ export class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default SignUp;

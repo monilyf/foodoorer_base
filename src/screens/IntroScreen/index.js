@@ -1,10 +1,9 @@
 
-// Intro slider with Custom Buttons
 
-// import React in our code
+
 import React, {useState} from 'react';
 
-// import all the components we are going to use
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,11 +13,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-
-//import AppIntroSlider to use it
 import AppIntroSlider from 'react-native-app-intro-slider';
-// import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-//import AppIntroSlider to use it
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+
 // import Icon from 'react-native-ionicons';
 // import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -107,17 +104,17 @@ const AppIntroScreen = ({navigation}) => {
           justifyContent: 'space-around',
           paddingBottom: 100,
         }}>
-        {/* <Text style={styles.introTitleStyle}>
+        <Text style={styles.introTitleStyle}>
           {item.title}
-        </Text> */}
-        <Label style={styles.introTitleStyle}>{item.title}</Label>
+        </Text> 
+        {/* <Label large bolder color={Color.INTRO_COLOR} align='center'>{item.title}</Label> */}
         <Image
           style={styles.introImageStyle}
           source={item.image} />
-        {/* <Text style={styles.introTextStyle}>
+        <Text style={styles.introTextStyle}>
           {item.text}
-        </Text> */}
-        <Label style={styles.introTextStyle}>{item.text}</Label>
+        </Text> 
+        {/* <Label tyle={styles.introTextStyle} normal color={Color.INTRO_COLOR}>{item.text}</Label> */}
 
       </View>
     );
@@ -192,4 +189,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-

@@ -18,7 +18,8 @@ const Color={
     DARK_BLUE:'#182b56',
     BLUE_MAGENTA:'#6f6e92',
     SUCCESS:'#00FF00',
-    PURE_CYAN:'#00d2ff'
+    PURE_CYAN:'#00d2ff',
+    INTRO_COLOR:'#28388f'
 }
 
 export default Color;

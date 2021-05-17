@@ -16,6 +16,8 @@ const Header = (props) => {
                 <Icon name='cart' size={26} color={Color.WHITE}/>
 
             </View>
+<View style={{backgroundColor:'#fff',height:21,width:'90%',bottom:20,alignSelf:'center',borderRadius:10}}></View>
+
         </View>
     )
 }
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#28527a',
         borderBottomLeftRadius:30,
         borderBottomRightRadius:30,
+    
         
     },
     subContainer:{

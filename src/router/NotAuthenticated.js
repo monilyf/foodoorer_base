@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Routes from './routes';
 import SignIn from '../screens/SignIn';
+import SignUp from '../screens/SignUp'
 import IntroScreen from '../screens/IntroScreen'
 
 import Auth from '../Authentication/Auth';
@@ -23,7 +24,11 @@ const NonAuthenticated = () => {
         component={SignIn}
         options={{headerShown: false}}
       />
-      
+      <Stack.Screen
+        name={Routes.SignUp}
+        component={SignUp}
+        options={{headerShown:false}}
+      />
       <Stack.Screen 
         name={Routes.Auth}
         component={Auth}

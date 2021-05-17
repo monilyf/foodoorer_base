@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
       },
       loginContainer:{
-          height:450,
+     
           width:'100%', 
           paddingHorizontal:20,
           paddingVertical:20,
@@ -54,7 +54,11 @@ const styles = StyleSheet.create({
         height: 20,
         marginLeft: 0,
       },
-     
+      tabScreen:{
+        flexDirection:'row',
+        justifyContent:'space-evenly',
+        marginBottom:15
+      }  
 });
 
 export default styles;
