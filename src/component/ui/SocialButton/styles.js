@@ -9,9 +9,9 @@ const styles = StyleSheet.create({
         // backgroundColor: Color.DARK_MODERATE_BLUE,
         // height: 50,
         // width:ThemeUtils.relativeWidth(80),
-        width:320,       
+        // width:320,       
         borderRadius: 14,
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
         alignSelf: 'center',
         marginTop: 10,
         borderWidth:1,
@@ -20,16 +20,18 @@ const styles = StyleSheet.create({
         paddingVertical: 14
       }, 
       btnImage: {
+
         width: 25,
         height: 20,
-        marginLeft: 0,
+        marginLeft: 20,
       },
       btnName: {
         fontWeight: 'bold',
         fontSize: 14,
         letterSpacing:1,
         color:Color.BLACK,
-         paddingRight:50
+        //  paddingRight:50
+        paddingHorizontal:20
       },
 });
 

@@ -81,12 +81,16 @@ export class SignIn extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
               
-              <View style={styles.loginContainer}>
+              <View style={CommonStyle.boxContainer}>
               {/* <TabNav/> */}
               <View style={styles.tabScreen}>
-        <Label bolder color={Color.DARK_MODERATE_BLUE} border >Sign In</Label>
-        <Label bolder color={Color.DARK_BLUE} >Sign Up</Label>
-        {/* <View></View> */}
+        <View style={{borderBottomWidth:4,borderBottomColor:'#62b34c',width:'50%'}}>
+        <Label bolder color={Color.DARK_BLUE} align='center'  mb={5}>Sign In</Label>
+
+        </View>
+        {/* <Label bolder color={Color.DARK_MODERATE_BLUE} >Sign Up</Label> */}
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate(Routes.SignUp)}><Label bolder color={Color.DARK_MODERATE_BLUE} align='right'>Sign Up</Label></TouchableOpacity>
+
       </View>
                 <Label color={Color.BLACK} xlarge>
                   Welcome
@@ -109,8 +113,6 @@ export class SignIn extends Component {
                   onChangeText={text => this.setState({passwod: text})}
                 />
 
-             
-
                 <SubmitButton
                   onPress={() => {
                     // this.check_IsNull();
@@ -118,19 +120,24 @@ export class SignIn extends Component {
                   }}
                   buttonText="Sign In"
                 />
+                <TouchableOpacity style={{marginTop:10, alignSelf:'flex-end'}} onPress={()=>this.props.navigation.navigate(Routes.ForgotPassword)}>
+                  <Label small color={Color.DARK_BLUE} align='right' me={5}>Forgot Password ?</Label>
+                </TouchableOpacity> 
                 <OrSection />
 
+                <View style={{flexDirection:'row'}}>
                 <SocialButton
-                  buttonText="Sign In with Facebook"
+                  buttonText="Facebook"
                   backgroundColor="red"
                   image={require('../../assets/images/facebook.png')}
                 />
                 <View style={{margin: 5}}></View>
 
                 <SocialButton
-                  buttonText="Sign In with Google"
+                  buttonText="Google    "
                   image={require('../../assets/images/google.png')}
                 />
+                </View>
                
                   <TouchableOpacity style={{flexDirection:'row',justifyContent:'center'}} onPress={()=>this.props.navigation.navigate(Routes.SignUp)}>
                     <Label

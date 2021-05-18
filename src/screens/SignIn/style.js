@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
       },
-      loginContainer:{
+      // loginContainer:{
      
-          width:'100%', 
-          paddingHorizontal:20,
-          paddingVertical:20,
-          backgroundColor:Color.WHITE,
-          borderRadius:12
-      },
+      //     width:'100%', 
+      //     paddingHorizontal:20,
+      //     paddingVertical:20,
+      //     backgroundColor:Color.WHITE,
+      //     borderRadius:12
+      // },
       welcomeText:{
         fontSize: 32, marginTop: 0, marginBottom: 8
       },

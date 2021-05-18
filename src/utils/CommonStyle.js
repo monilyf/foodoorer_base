@@ -7,7 +7,14 @@ const styles = StyleSheet.create({
     height: 110,
     width: '80%',
   },
- 
+  boxContainer:{
+     
+    width:'100%', 
+    paddingHorizontal:20,
+    paddingVertical:20,
+    backgroundColor:Color.WHITE,
+    borderRadius:12
+},
  
   errorMsg: {
     color: Color.ERROR,

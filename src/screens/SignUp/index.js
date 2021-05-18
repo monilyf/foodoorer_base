@@ -81,10 +81,13 @@ export class SignUp extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
              
-              <View style={styles.loginContainer}>
+              <View style={CommonStyle.boxContainer}>
               <View style={styles.tabScreen}>
-        <Label bolder color={Color.DARK_MODERATE_BLUE} >Sign In</Label>
-        <Label bolder color={Color.DARK_BLUE} border>Sign Up</Label>
+        <TouchableOpacity onPress={()=>this.props.navigation.navigate(Routes.SignIn)}><Label bolder color={Color.DARK_MODERATE_BLUE} align='right'>Sign In</Label></TouchableOpacity>
+        <View style={{borderBottomWidth:4,borderBottomColor:'#62b34c',width:'50%'}}>
+        <Label bolder color={Color.DARK_BLUE} align='center' mb={5}>Sign Up</Label>
+
+        </View>
         {/* <View></View> */}
       </View>
                 <Label color={Color.BLACK} xlarge>
@@ -109,7 +112,7 @@ export class SignUp extends Component {
                   onChangeText={text => this.setState({email: text})}
                 />
 
-<InputContainer
+                <InputContainer
                   iconName="phone"
                   placeholder="Enter Mobile Number"
                   iconColor={Color.BLACK}
