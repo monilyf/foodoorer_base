@@ -44,7 +44,7 @@ export default ToastMessage
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:60,backgroundColor:'#a5f0cd',width:'100%',
+        marginTop:60,backgroundColor:Color.WHITE,width:'100%',
         alignSelf:'center',marginRight:25
     },
     subContainer:{

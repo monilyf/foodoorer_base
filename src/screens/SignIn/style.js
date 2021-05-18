@@ -8,13 +8,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',  
         // backgroundColor: '#F5FCFF',  
     },
-    linearGradient: {
-        width: '100%',
-        height: '100%',
-        opacity: 0.95,
-        justifyContent: 'center',
-        alignItems: 'center'
-      },
+    // linearGradient: {
+    //     width: '100%',
+    //     height: '100%',
+    //     opacity: 0.95,
+    //     justifyContent: 'center',
+    //     alignItems: 'center'
+    //   },
       // loginContainer:{
      
       //     width:'100%', 

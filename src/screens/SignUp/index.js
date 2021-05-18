@@ -14,11 +14,10 @@ import styles from '../SignIn/style';
 import Color from '../../utils/Color';
 import {
   InputContainer,
-  OrSection,
   SubmitButton,
   Label,
-  SocialButton,
   ToastMessage,
+  BottomSheet
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
@@ -71,15 +70,16 @@ export class SignUp extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
+          // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
+          colors={['#29B76D', '#2A97A6']}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
-          style={styles.linearGradient}>
+          style={CommonStyle.linearGradient}>
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
-            <View>
+            <View >
              
               <View style={CommonStyle.boxContainer}>
               <View style={styles.tabScreen}>
@@ -147,6 +147,7 @@ export class SignUp extends Component {
                 null
               )}
             </View>
+            {/* <BottomSheet/> */}
           </KeyboardAvoidingView>
         </LinearGradient>
       </SafeAreaView>

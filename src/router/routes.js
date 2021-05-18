@@ -7,7 +7,10 @@ const Routes ={
     Splash:"Splash",
     Home:"Home",
     Auth:"Auth",
-    IntroScreen:'IntroScreen'
+    IntroScreen:'IntroScreen',
+    ForgotPassword:'ForgotPassword',
+    OtpScreen:'OtpScreen',
+    ResetPassword:'ResetPassword'
 }
 
 export default Routes;

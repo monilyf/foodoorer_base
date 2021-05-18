@@ -35,7 +35,7 @@ const RoundButton = (props) => {
             btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 10});
             btnTextStylesArray.push({fontSize: Theme.fontXLarge - 2});
         } else {
-            btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 8});
+            btnContainerStylesArray.push({paddingHorizontal: 20, paddingVertical: 10});
             btnTextStylesArray.push({fontSize: Theme.fontNormal});
         }
         let btnWholeStyles = [];
@@ -68,7 +68,7 @@ const RoundButton = (props) => {
                     <TouchableOpacity style={btnContainerStylesArray} 
                             onPress={onClick}>
                         <Text style={btnTextStylesArray}>
-                            {props.children.toUpperCase()}
+                            {props.children}
                         </Text>
                     </TouchableOpacity>
                 </View>

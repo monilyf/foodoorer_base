@@ -10,6 +10,7 @@ import Header from './ui/Header'
 import ModelView from './ui/ModelView'
 import ToastMessage from './ui/ToastMessage'
 import TabNav from './ui/TabNav'
+import BottomSheet from './ui/BottomSheet'
 
 export {
     InputContainer,
@@ -24,4 +25,5 @@ export {
     ModelView,
     ToastMessage,
     TabNav,
+    BottomSheet,
 }

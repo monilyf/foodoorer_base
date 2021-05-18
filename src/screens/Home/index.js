@@ -33,7 +33,7 @@ export class Home extends Component {
         {/* <Text> Home </Text> */}
         <Label  color='black' mt={20} bolder >Home screen.</Label>
         <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
-        <RoundButton mt={20} backgroundColor='#a5a5a5' btn_lg textColor={Color.ALICE_BLUE} onPress={()=>console.log('manya')}>Hello Round</RoundButton>
+        <RoundButton mt={20} backgroundColor={Color.BLUE_MAGENTA} btn_lg textColor={Color.ALICE_BLUE} onPress={()=>console.log('manya')}>Hello Round</RoundButton>
         <FloatingActionButton color={Color.BLUE_MAGENTA} icon='architecture' left ms={50} onPress={()=>console.log('manva')} iconColor='#a5fd07' iconSize={40}/>
       </View>
       </SafeAreaView>

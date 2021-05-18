@@ -19,7 +19,13 @@ const Color={
     BLUE_MAGENTA:'#6f6e92',
     SUCCESS:'#00FF00',
     PURE_CYAN:'#00d2ff',
-    INTRO_COLOR:'#28388f'
+    INTRO_COLOR:'#28388f',
+    APPLE:'#62b34c',
+    FIREFLY:'#10353A',
+    BOTTLE_GREEN:'#0c4427',
+    DARK_CYAN:'#01a66e'
+
+   
 }
 
 export default Color;

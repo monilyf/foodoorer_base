@@ -4,7 +4,8 @@ import Color from '../../../utils/Color';
 const styles = StyleSheet.create({
     inputContainer: {
       flexDirection: 'row',
-      marginTop: 10,
+      // marginTop: 10,
+      marginVertical:10,
       borderColor: '#FFF',
       // borderWidth: 0.5,
       borderRadius: 14,

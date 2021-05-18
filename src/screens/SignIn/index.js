@@ -8,6 +8,7 @@ import {
   Image,
   Alert,
   LogBox,
+  Button
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from './style';
@@ -20,12 +21,14 @@ import {
   SocialButton,
   ToastMessage,
   TabNav,
+
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
 // import Toast from 'react-native-toast-message'
+
 
 export class SignIn extends Component {
   constructor(props) {
@@ -42,6 +45,8 @@ export class SignIn extends Component {
 
  
 
+
+  
   handleOnSubmit = () => {
     this.setState(
       {emailError: validation('email', this.state.email), showToast: true,
@@ -71,15 +76,15 @@ export class SignIn extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
+          colors={['#29B76D', '#2A97A6']}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
-          style={styles.linearGradient}>
+          style={CommonStyle.linearGradient}>
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
-            <View>
+            <View style={{marginTop:60}}>
               
               <View style={CommonStyle.boxContainer}>
               {/* <TabNav/> */}
@@ -111,6 +116,7 @@ export class SignIn extends Component {
                   placeholder="Enter Password"
                   iconColor={Color.BLACK}
                   onChangeText={text => this.setState({passwod: text})}
+                  // eye
                 />
 
                 <SubmitButton
@@ -160,6 +166,9 @@ export class SignIn extends Component {
               ) : (
                 null
               )}
+            </View>
+            <View >
+          
             </View>
           </KeyboardAvoidingView>
         </LinearGradient>
