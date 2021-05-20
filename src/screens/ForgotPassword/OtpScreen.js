@@ -2,22 +2,18 @@ import React, {Component} from 'react';
 import {
   KeyboardAvoidingView,
   SafeAreaView,
-  Text,
   View,
-  TouchableOpacity,
   Image,
-  Alert,
-  LogBox,
+  TextInput,
+  TouchableOpacity
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import styles from '../SignIn/style';
+import otpStyle from './style'
 import Color from '../../utils/Color';
 import {
-  InputContainer,
-  SubmitButton,
   Label,
   ToastMessage,
-  BottomSheet,
   RoundButton,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -33,34 +29,44 @@ export class OtpScreen extends Component {
     super(props);
 
     this.state = {
-      email: '',
-      emailError: '',
+      otp: '',
+      otpError: '',
       showToast: false,
     };
   }
 
   handleOnSubmit = () => {
-    let emailError;
-    let isValide = true;
+  
+    let otpError ;
+        let isValid ;
+        otpError = validation("otp",this.state.otp)
+       
+        if(otpError !=null){
+            console.log("error")
+            this.setState({
+                otpError:otpError,
+                showToast:true,
+                
+                    },() => {
+                        setTimeout(() => {
+                          this.setState({showToast: false});
+                        }, 2500);
+               
+            })
+            isValid=false;
+        }
+        else{
+          console.log('done')
+            this.setState({
+                otpError:""
+            })
+            isValid=true;
+        }
+        if(isValid){
+            this.props.navigation.navigate(Routes.ResetPassword)
+        }
+      
 
-    emailError = validation('email', this.state.email);
-
-    if (emailError != null) {
-      console.log('errors ');
-      this.setState(
-        {
-          emailError: emailError,
-          showToast: true,
-        },
-        () => {
-          setTimeout(() => {
-            this.setState({showToast: false});
-          }, 2500);
-        },
-      );
-    } else {
-      this.props.navigation.navigate(Routes.ResetPassword);
-    }
   };
 
   render(props) {
@@ -68,7 +74,7 @@ export class OtpScreen extends Component {
       <SafeAreaView style={styles.container}>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={['#29B76D', '#2A97A6']}
+          colors={[Color.GRADIENT2,Color.GRADIENT1 ]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -78,7 +84,7 @@ export class OtpScreen extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
               <View style={CommonStyle.boxContainer}>
-                <Image
+                {/* <Image
                   source={logo}
                   style={{
                     alignSelf: 'center',
@@ -86,27 +92,65 @@ export class OtpScreen extends Component {
                     height: ThemeUtils.relativeHeight(12),
                     width: ThemeUtils.relativeWidth(50),
                   }}
-                />
+                /> */}
                 <Label color={Color.BLACK} xlarge>
                   Enter 4 Digits Code
                 </Label>
 
                 <Label color={Color.DARK_GRAY} mt={10} mb={10} small>
-                  Enter the digits code that you received on your email.
+                  Enter the 4 digits code that you received on your email.
                 </Label>
+                
+                <View style={{marginVertical:40}}>
+                 <View style={otpStyle.otpContainer}>
+                   <TextInput 
+                     maxLength={1}
+                     style={otpStyle.otpBox}
+                     onChangeText={(text)=>{
+                      // console.log('this.state.otp==',text,this.state.otp)
 
-                <InputContainer
-                  iconName="email"
-                  placeholder="Enter Email"
-                  iconColor={Color.BLACK}
-                  onChangeText={text => this.setState({email: text})}
-                />
+                       this.setState({otp:this.state.otp+text})
+                      //  console.log('new this.state.otp=',this.state.otp)
+                       }}
+                   />
+                   <TextInput 
+                    maxLength={1}
+                    style={otpStyle.otpBox}
+                    onChangeText={(text)=>{
+                      // console.log('this.state.otp==',text,this.state.otp)
+                       this.setState({otp:this.state.otp+text})
+                      //  console.log('new this.state.otp=',this.state.otp)
+                       }}
+                    />
+                    <TextInput
+                      maxLength={1}
+                      style={otpStyle.otpBox}
+                      onChangeText={(text)=>{
+                      //  console.log('this.state.otp==',text,this.state.otp)
+                       this.setState({otp:this.state.otp+text})
+                      //  console.log('new this.state.otp=',this.state.otp)
+                       }}
+                    />
+                    <TextInput
+                      maxLength={1}
+                      style={otpStyle.otpBox}
+                      onChangeText={(text)=>{
+                      //  console.log('this.state.otp==',text,this.state.otp)
+                       this.setState({otp:this.state.otp+text})
+                      //  console.log('new this.state.otp=',this.state.otp)
+                       }}
+                      />
+                     </View>
+                     <TouchableOpacity style={{marginTop:50,alignSelf:'center'}} onPress={()=>this.setState({otp:''})}>
+                  <Label color={Color.PRIMARY} large>Reset</Label>
+                 </TouchableOpacity>
+                </View>
 
                 <RoundButton
                   onPress={() => {
                     this.handleOnSubmit();
                   }}
-                  mt={10}
+                  // mt={20}
                   backgroundColor={Color.DARK_CYAN}>
                   Continue
                 </RoundButton>
@@ -114,7 +158,7 @@ export class OtpScreen extends Component {
             </View>
             <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
-                <ToastMessage text="Invalid OTP" />
+                <ToastMessage text={this.state.otpError} />
               ) : null}
             </View>
           </KeyboardAvoidingView>
@@ -125,3 +169,4 @@ export class OtpScreen extends Component {
 }
 
 export default OtpScreen;
+

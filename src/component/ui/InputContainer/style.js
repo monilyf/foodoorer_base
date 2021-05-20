@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     inputContainer: {
       flexDirection: 'row',
       // marginTop: 10,
-      marginVertical:10,
+      // marginVertical:10,
       borderColor: '#FFF',
       // borderWidth: 0.5,
       borderRadius: 14,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
       marginLeft: 20,
       position: 'absolute',
       fontSize: 20,
-      color: '#28388f',
+      // color: '#28388f',
     },
   });
 

@@ -25,6 +25,7 @@ const InputContainer = (props) => {
         <TextInput
           placeholder={props.placeholder}
           style={styles.input}
+          
           value={props.value}
           onEndEditing={props.onEndEditing}
           maxLength={props.maxLength}

@@ -18,6 +18,9 @@ const Errors = {
     internetError: "Internet not available.",
     invalidToken: "User is unauthorized. Please login again.",
     requestTimeOut: "Something went wrong.Please try again.",
+
+    otpBlank: "Please enter valid OTP",
+    otpInvalid: "Invalid OTP, Please try again!"
 };
 
 const PermissionMessage = {

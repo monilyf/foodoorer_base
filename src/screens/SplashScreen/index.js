@@ -11,6 +11,7 @@ import styles from "./style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Label } from '../../component';
 import Color from '../../utils/Color';
+import logo from '../../assets/images/foodoorer2.png'
 
 class SplashScreen extends Component  {
 
@@ -64,12 +65,9 @@ render(){
     return (
       <View style={styles.SplashScreen_RootView}>
        
-         <Image source={require('../../assets/images/food_loader.gif')} style={styles.logo}/>
+         <Image source={logo} style={styles.logo}/>
          
-         {/* <View style={styles.SplashScreen_ChildView}>
-          <Image source={require('../assests/images/splashScreen1.gif')}
-            style={{ width: '100%', height: '100%', resizeMode: 'contain' }} />
-        </View> */}
+    
         <View style={styles.footer}>
           <Label color={Color.BLUE_MAGENTA}>{' '}By Team{"\n"}Foodoorer</Label>
         </View>

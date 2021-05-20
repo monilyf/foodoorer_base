@@ -88,6 +88,7 @@ export class ForgotPassword extends Component {
     this.state = {
            email: '',
       emailError: '',
+      
          showToast: false,
     };
   }
@@ -95,34 +96,45 @@ export class ForgotPassword extends Component {
  
   handleOnSubmit = () => {
    
-    let emailError;
-    let isValide = true;
+    let emailError ;
+        let isValid ;
+        emailError = validation("email",this.state.email)
+       
+        if(emailError !=null){
+            console.log("error")
+            this.setState({
+                emailError:emailError,
+                showToast:true
+                    },() => {
+                        setTimeout(() => {
+                          this.setState({showToast: false});
+                        }, 2500);
+               
+            })
+            isValid=false;
+        }
+        else{
+          console.log('done')
+            this.setState({
+                emailError:""
+            })
+            isValid=true;
+        }
+        if(isValid){
+            // this.props.navigation.navigate(Routes.OtpScreen)
+            this.props.navigation.navigate(Routes.ResetPassword)
+        }
+      
+       
+    }
 
-    emailError = validation('email', this.state.email);
-    
-    if(emailError!=null){
-        console.log('errors ')
-        this.setState({
-            emailError:emailError,
-            showToast:true
-        },() => {
-            setTimeout(() => {
-              this.setState({showToast: false});
-            }, 2500);
-          },)
-    }
-    else{
-        this.props.navigation.navigate(Routes.OtpScreen)
-    }
-  
-}
 
   render(props) {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={['#29B76D', '#2A97A6']}
+          colors={[Color.GRADIENT2, Color.GRADIENT1]}
+
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -133,12 +145,12 @@ export class ForgotPassword extends Component {
             <View >
              
               <View style={CommonStyle.boxContainer}>
-                <Image source={logo} style={{alignSelf:'center',marginBottom:15,height:ThemeUtils.relativeHeight(12),width:ThemeUtils.relativeWidth(50)}}/>
-                <Label color={Color.BLACK} xlarge>
+                {/* <Image source={logo} style={{alignSelf:'center',marginBottom:15,height:ThemeUtils.relativeHeight(12),width:ThemeUtils.relativeWidth(50)}}/> */}
+                <Label color={Color.BLACK} align='center' xlarge>
                   Forgot your password?
                 </Label>
 
-                <Label color={Color.DARK_GRAY} mt={10} mb={10}  small>
+                <Label color={Color.DARK_GRAY} mt={10} mb={15}  small>
                   Enter your email for the verfication process.
                   we will send 4 digits code to your email.
                 </Label>
@@ -149,8 +161,9 @@ export class ForgotPassword extends Component {
                   iconColor={Color.BLACK}
                   onChangeText={text => this.setState({email: text})}
                 />
+                {this.state.emailError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.emailError}</Label>:null}
 
-<RoundButton
+        <RoundButton
                   onPress={() => {
                     this.handleOnSubmit();
                   }}
@@ -161,13 +174,13 @@ export class ForgotPassword extends Component {
               
               </View>
             </View>
-            <View style={{marginVertical: 30}}>
+            {/* <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
-                <ToastMessage text="Invalid Email" />
+                <ToastMessage text={this.state.emailError} />
               ) : (
                 null
               )}
-            </View>
+            </View> */}
          
           </KeyboardAvoidingView>
         </LinearGradient>

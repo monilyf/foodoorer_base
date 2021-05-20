@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   boxContainer:{
     // width:'100%', 
-    marginTop:50,
+    marginTop:20,
     width:ThemeUtils.relativeWidth(95),
     paddingHorizontal:20,
     paddingVertical:20,

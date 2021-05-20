@@ -23,6 +23,7 @@ import EntypoIcon from 'react-native-vector-icons/Entypo'
 import Routes from '../../router/routes';
 import Color from '../../utils/Color';
 import {Label} from '../../component'
+import { color } from 'react-native-reanimated';
 
 
 
@@ -164,16 +165,15 @@ const styles = StyleSheet.create({
   },
   introTextStyle: {
     fontSize: 18,
-    // color: 'white',
     textAlign: 'center',
     paddingVertical: 30,
-    color:'#28388f'
-
+    color:Color.INTRO_COLOR
+    // color:Color.PRIMARY
   },
   introTitleStyle: {
     fontSize: 25,
-    // color: 'white',
-    color:'#28388f',
+    color:Color.INTRO_COLOR,
+    // color:Color.PRIMARY,
 
     textAlign: 'center',
     marginBottom: 16,

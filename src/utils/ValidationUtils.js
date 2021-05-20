@@ -52,6 +52,15 @@ let constraints = {
             tooShort: Message.Errors.phoneTooShort
         },
     },
+    otp:{
+        presence:{
+            message:Message.Errors.otpBlank
+        },
+        format:{
+            pattern:/^\d{4}/,
+            message:Message.Errors.otpInvalid
+        }
+    },
     age: {
         presence: {
             message: Message.Errors.ageBlank

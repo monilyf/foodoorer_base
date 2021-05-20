@@ -74,7 +74,7 @@ export class ResetPassword extends Component {
       <SafeAreaView style={styles.container}>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={['#29B76D', '#2A97A6']}
+          colors={[Color.GRADIENT1, Color.GRADIENT2]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -84,7 +84,7 @@ export class ResetPassword extends Component {
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
               <View style={CommonStyle.boxContainer}>
-                <Image
+                {/* <Image
                   source={logo}
                   style={{
                     alignSelf: 'center',
@@ -92,7 +92,7 @@ export class ResetPassword extends Component {
                     height: ThemeUtils.relativeHeight(12),
                     width: ThemeUtils.relativeWidth(50),
                   }}
-                />
+                /> */}
                 <Label color={Color.BLACK} xlarge>
                   Reset Password
                 </Label>
@@ -108,6 +108,10 @@ export class ResetPassword extends Component {
                   onChangeText={text => this.setState({password: text})}
                   extraIconName='eye'
                 />
+
+              {this.state.passwordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.passwordError}</Label>:<Label></Label>}
+
+
                 <InputContainer
                     iconName='lock'
                     placeholder='Re-type Password'
@@ -115,6 +119,7 @@ export class ResetPassword extends Component {
                     onChangeText={text => this.setState({confirmPassword:text})}
                     extraIconName='eye'
                 />
+            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={50} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:null}
 
                 <RoundButton
                   onPress={() => {
@@ -128,7 +133,7 @@ export class ResetPassword extends Component {
             </View>
             <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
-                <ToastMessage text="Check Password" />
+                <ToastMessage text={this.state.confirmPasswordError} />
               ) : null}
             </View>
           </KeyboardAvoidingView>
