@@ -1,8 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import {Text, TouchableOpacity, Image } from 'react-native';
 import styles from './styles';
-import Theme from '../../../utils/ThemeUtils';
+import ThemeUtils from '../../../utils/ThemeUtils';
 import PropTypes from 'prop-types';
+import Label from '../Label';
+import Color from '../../../utils/Color';
 
 const SocialButton = (props) => {
   onClick = () => {
@@ -18,7 +20,7 @@ const SocialButton = (props) => {
   return (
     <TouchableOpacity style={styles.btnPrimary} onPress={onClick}>
       <Image style={styles.btnImage} source={props.image} />
-      <Text style={styles.btnName}>{props.buttonText}</Text>
+      <Label color={Color.PRIMARY} bolder ph={20} small>{props.buttonText}</Label>
     </TouchableOpacity>
   );
 };

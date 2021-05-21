@@ -3,26 +3,21 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   View,
-  Image,
   TextInput,
   TouchableOpacity
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from '../SignIn/style';
 import otpStyle from './style'
 import Color from '../../utils/Color';
 import {
   Label,
-  ToastMessage,
   RoundButton,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
-// import Toast from 'react-native-toast-message'
-import logo from '../../assets/images/foodoorer2.png';
-import ThemeUtils from '../../utils/ThemeUtils';
+
 
 export class OtpScreen extends Component {
   constructor(props) {
@@ -71,10 +66,10 @@ export class OtpScreen extends Component {
 
   render(props) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={CommonStyle.container}>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={[Color.GRADIENT2,Color.GRADIENT1 ]}
+          colors={[Color.GRADIENT3,Color.GRADIENT4 ]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -156,11 +151,11 @@ export class OtpScreen extends Component {
                 </RoundButton>
               </View>
             </View>
-            <View style={{marginVertical: 30}}>
+            {/* <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
                 <ToastMessage text={this.state.otpError} />
               ) : null}
-            </View>
+            </View> */}
           </KeyboardAvoidingView>
         </LinearGradient>
       </SafeAreaView>

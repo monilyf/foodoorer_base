@@ -1,16 +1,13 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
-  Text,
   View,
   TextInput,
-  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconError from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEye from 'react-native-vector-icons/Octicons';
 import styles from './style'
-import Color from '../../../utils/Color'
 
 const InputContainer = (props) => {
   return (

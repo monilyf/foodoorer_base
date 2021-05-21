@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { circleStyle } from '../../../utils/ThemeUtils';
 import Color from '../../../utils/Color';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import PropTypes from 'prop-types';
 import { TouchableOpacity } from 'react-native';
 

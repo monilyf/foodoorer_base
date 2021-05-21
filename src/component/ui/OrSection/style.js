@@ -1,4 +1,6 @@
 import {StyleSheet} from "react-native"
+import Color from "../../../utils/Color";
+import ThemeUtils from '../../../utils/ThemeUtils'
 
 const styles = StyleSheet.create({
     container:{
@@ -8,9 +10,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     line: { 
-        height: 1,
-        width:'42%',
-        backgroundColor: '#a5a5a5',
+        height: ThemeUtils.relativeHeight(0.1),
+        // width:'42%',
+        width:ThemeUtils.relativeWidth(36),
+        backgroundColor: Color.DARK_GRAY,
+        
      },
 
 });

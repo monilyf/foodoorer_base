@@ -2,145 +2,151 @@ import validate from 'validate.js';
 import Message from './MessageUtils';
 
 let constraints = {
-    name: {
-        presence: {
-            message: Message.Errors.nameBlank
-        },
-        length: {
-            maximum: 30,
-            tooLong: Message.Errors.nameLength
-        },
-        format: {
-            pattern: /^[a-zA-Z\s]*$/,
-            message: Message.Errors.nameInvalid,
-        }
+  name: {
+    presence: {
+      message: Message.Errors.nameBlank,
     },
-    email: {
-        presence: {
-            message: Message.Errors.emailBlank
-        },
-        format: {
-            pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-            message: Message.Errors.emailValidity,
-        }
+    length: {
+      maximum: 30,
+      tooLong: Message.Errors.nameLength,
     },
-    password: {
-        presence: {
-            message: Message.Errors.pwdBlank
-        },
-        length: {
-            minimum: 6,
-            message: Message.Errors.pwdLengthMinimum,
-        }
+    format: {
+      pattern: /^[a-zA-Z\s]*$/,
+      message: Message.Errors.nameInvalid,
     },
-    passwordBlank: {
-        presence: {
-            message: Message.Errors.pwdBlank
-        }
+  },
+  email: {
+    presence: {
+      message: Message.Errors.emailBlank,
     },
-    phoneNo: {
-        presence: {
-            message: Message.Errors.phoneBlank
-        },
-        numericality: {
-            notValid: Message.Errors.phoneInvalid
-        },
-        length: {
-            maximum: 15,
-            minimum: 6,
-            tooLong: Message.Errors.phoneTooLong,
-            tooShort: Message.Errors.phoneTooShort
-        },
+    format: {
+      pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+      message: Message.Errors.emailValidity,
     },
-    otp:{
-        presence:{
-            message:Message.Errors.otpBlank
-        },
-        format:{
-            pattern:/^\d{4}/,
-            message:Message.Errors.otpInvalid
-        }
+  },
+  password: {
+    presence: {
+      message: Message.Errors.pwdBlank,
     },
-    age: {
-        presence: {
-            message: Message.Errors.ageBlank
-        },
-        numericality: {
-            onlyInteger: true,
-            strict: true,
-            lessThanOrEqualTo: 100,
-            greaterThanOrEqualTo: 5,
-            notGreaterThanOrEqualTo: Message.Errors.ageLess,
-            notLessThanOrEqualTo: Message.Errors.ageGrater,
-            notValid: Message.Errors.ageInvalid,
-            notInteger: Message.Errors.ageInvalid,
-        }
+    length: {
+      minimum: 6,
+      message: Message.Errors.pwdLengthMinimum,
     },
-    couponCode: {
-        presence: {
-            message: Message.Errors.couponCodeBlank
-        },
+  },
+  passwordBlank: {
+    presence: {
+      message: Message.Errors.pwdBlank,
     },
-    comment: {
-        presence: {
-            message: Message.Errors.commentBlank
-        },
+  },
+  phoneNo: {
+    presence: {
+      message: Message.Errors.phoneBlank,
     },
-    flagComment: {
-        presence: {
-            message: Message.Errors.flagCommentBlank
-        },
+    numericality: {
+      notValid: Message.Errors.phoneInvalid,
     },
-    countryCode: {
-        presence: {
-            message: Message.Errors.countryCodeBlank
-        },
+    format: {
+      pattern: /^[0]?[6789]\d{9}$/,
+      message: Message.Errors.phonePattern,
     },
-    playListName: {
-        presence: {
-            message: Message.Errors.playListNameBlank
-        }
+    length: {
+      maximum: 10,
+      minimum: 10,
+      tooLong: Message.Errors.phoneTooLong,
+      tooShort: Message.Errors.phoneTooShort,
     },
+  },
+  otp: {
+    presence: {
+      message: Message.Errors.otpBlank,
+    },
+    format: {
+      pattern: /^\d{4}/,
+      message: Message.Errors.otpInvalid,
+    },
+  },
+  age: {
+    presence: {
+      message: Message.Errors.ageBlank,
+    },
+    numericality: {
+      onlyInteger: true,
+      strict: true,
+      lessThanOrEqualTo: 100,
+      greaterThanOrEqualTo: 5,
+      notGreaterThanOrEqualTo: Message.Errors.ageLess,
+      notLessThanOrEqualTo: Message.Errors.ageGrater,
+      notValid: Message.Errors.ageInvalid,
+      notInteger: Message.Errors.ageInvalid,
+    },
+  },
+  couponCode: {
+    presence: {
+      message: Message.Errors.couponCodeBlank,
+    },
+  },
+  comment: {
+    presence: {
+      message: Message.Errors.commentBlank,
+    },
+  },
+  flagComment: {
+    presence: {
+      message: Message.Errors.flagCommentBlank,
+    },
+  },
+  countryCode: {
+    presence: {
+      message: Message.Errors.countryCodeBlank,
+    },
+  },
+  playListName: {
+    presence: {
+      message: Message.Errors.playListNameBlank,
+    },
+  },
 };
 
 export function validation(fieldName, value) {
-    let formValues = {};
-    formValues[fieldName] = value === '' ? null : value;
+  let formValues = {};
+  formValues[fieldName] = value === '' ? null : value;
 
-    let formFields = {};
-    formFields[fieldName] = constraints[fieldName];
+  let formFields = {};
+  formFields[fieldName] = constraints[fieldName];
 
-    let result = validate(formValues, formFields, {fullMessages: false});
+  let result = validate(formValues, formFields, {fullMessages: false});
 
-    if (result) {
-        return result[fieldName][0]
-    }
-    return null
+  if (result) {
+    return result[fieldName][0];
+  }
+  return null;
 }
 
-
 let PasswordConstraints = {
-    confirmPassword: {
-        equality: {
-            attribute: 'password',
-            message: Message.Errors.pwdMisMatch
-        }
-    }
+  confirmPassword: {
+    equality: {
+      attribute: 'password',
+      message: Message.Errors.pwdMisMatch,
+    },
+  },
 };
 
 /**
  * @return {null}
  */
 export function PasswordValidate(password, confirmPassword) {
-    let result1 = validate({
-        password: password,
-        confirmPassword: confirmPassword
-    }, PasswordConstraints, {fullMessages: false});
+  let result1 = validate(
+    {
+      password: password,
+      confirmPassword: confirmPassword,
+    },
+    PasswordConstraints,
+    {fullMessages: false},
+  );
 
-    if (result1 !== null && result1 !== undefined) {
-        if (result1['confirmPassword'] !== undefined)
-            return result1['confirmPassword'][0];
-    }
-    return null;
-
+  if (result1 !== null && result1 !== undefined) {
+    if (result1['confirmPassword'] !== undefined)
+      return result1['confirmPassword'][0];
+  }
+  return null;
 }

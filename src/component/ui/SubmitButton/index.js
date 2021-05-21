@@ -3,6 +3,7 @@ import { Alert, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styles from './style'
 import Color from '../../../utils/Color'
+import Label from '../Label'
 
 const SubmitButton=(props)=> {
     // console.log(typeof (Color.PURE_CYAN),Color.WHITE )
@@ -19,9 +20,9 @@ const SubmitButton=(props)=> {
           end={{x: 1, y: 0}}>
      
   
-          <Text style={{color: '#fff', fontWeight: 'bold', fontSize: 18}}>
+          <Label bolder color={Color.WHITE}>
             {props.buttonText}
-          </Text>
+          </Label>
   
         </LinearGradient>
       </TouchableOpacity>

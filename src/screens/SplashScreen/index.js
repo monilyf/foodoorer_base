@@ -3,15 +3,18 @@
 import { CommonActions } from '@react-navigation/routers';
 import React, { Component } from 'react';
 import {
-  Platform, StyleSheet, View, Text,
+  View, 
   Image,
+  StatusBar,
 } from 'react-native';
 import Routes from '../../router/routes';
 import styles from "./style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Label } from '../../component';
 import Color from '../../utils/Color';
-import logo from '../../assets/images/foodoorer2.png'
+import logo from '../../assets/images/foodoorer2.png';
+import LinearGradient from 'react-native-linear-gradient'
+import CommonStyle from '../../utils/CommonStyle'
 
 class SplashScreen extends Component  {
 
@@ -63,16 +66,23 @@ class SplashScreen extends Component  {
 }
 render(){
     return (
-      <View style={styles.SplashScreen_RootView}>
+      // <SafeAreaView style={styles.container}>
+      <LinearGradient
+      colors={[Color.GRADIENT3, Color.GRADIENT4]}
+      start={{x: 0, y: 1}}
+      end={{x: 1, y: 0}}
+      style={CommonStyle.linearGradient}>
+        <View style={[styles.SplashScreen_RootView,CommonStyle.container]}>
+       <StatusBar hidden={true}/>
+       <Image source={logo} style={styles.logo}/>
        
-         <Image source={logo} style={styles.logo}/>
-         
-    
-        <View style={styles.footer}>
-          <Label color={Color.BLUE_MAGENTA}>{' '}By Team{"\n"}Foodoorer</Label>
-        </View>
-       
+  
+      <View style={styles.footer}>
+        <Label color={Color.BLUE_MAGENTA}>{' '}By Team{"\n"}Foodoorer</Label>
       </View>
+     
+    </View>
+ </LinearGradient>
     );
   }
 }

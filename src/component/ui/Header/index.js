@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     container:{
         height:80,
         width:'100%',
-        backgroundColor:'#28527a',
+        backgroundColor:Color.APPLE,
         borderBottomLeftRadius:30,
         borderBottomRightRadius:30,
     

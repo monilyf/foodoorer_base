@@ -2,30 +2,23 @@ import React, {Component} from 'react';
 import {
   KeyboardAvoidingView,
   SafeAreaView,
-  Text,
   View,
   TouchableOpacity,
-  Image,
-  Alert,
-  LogBox,
+  StatusBar,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from '../SignIn/style';
 import Color from '../../utils/Color';
 import {
   InputContainer,
   SubmitButton,
   Label,
-  ToastMessage,
-  BottomSheet,
+  Logo,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
-// import Toast from 'react-native-toast-message'
-import logo from '../../assets/images/foodoorer2.png';
-import ThemeUtils from '../../utils/ThemeUtils';
+import * as Animatable from 'react-native-animatable'
 
 export class SignUp extends Component {
   constructor(props) {
@@ -42,38 +35,45 @@ export class SignUp extends Component {
     };
   }
 
-  handleOnSubmit = () => {
-    let emailError, nameError, phoneError;
-    let isValide = true;
+  handleOnSubmit=()=>{
+    let emailError,nameError,phoneError;
+    let isValid;
+    emailError = validation('email',this.state.email);
+    nameError = validation('name',this.state.name);
+    phoneError = validation('phoneNo',this.state.phone)
 
-    nameError = validation('name', this.state.name);
-    emailError = validation('email', this.state.email);
-    phoneError = validation('phoneNo', this.state.phone);
-
-    if (nameError != null || emailError != null || phoneError != null) {
-      console.log('errors ');
+    if (emailError!=null || nameError!=null || phoneError!=null ){
+      console.log("validation Error in Sign Up")
       this.setState(
         {
-          nameError: nameError,
-          emailError: emailError,
-          phoneError: phoneError,
-          showToast: true,
-        },
-        () => {
-          setTimeout(() => {
-            this.setState({showToast: false});
-          }, 2500);
+          emailError:emailError,
+          nameError:nameError,
+          phoneError:phoneError,
         },
       );
+      isValid = false;
     }
-  };
-
+    else{
+      console.log('Sign Up Done')
+      this.setState({
+        emailError:'',
+        nameError:'',
+        phoneError:'',
+      });
+      isValid=true;
+    }
+    if(isValid){
+      this.props.navigation.navigate(Routes.SignIn)
+    }
+  }
+ 
   render(props) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={CommonStyle.container}>
+      <StatusBar hidden={true}/>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={['#6DC999', '#73BFC9']}
+          colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -82,42 +82,31 @@ export class SignUp extends Component {
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
             <View style={{marginTop: -50}}>
-              <Image
-                source={logo}
-                style={{
-                  alignSelf: 'center',
-                  marginBottom: 15,
-                  height: ThemeUtils.relativeHeight(12),
-                  width: ThemeUtils.relativeWidth(50),
-                }}
-              />
+            <Animatable.View animation="fadeInLeft" iterationDelay={400}>
+
+             <Logo/>
               <Label xxlarge align="center" bolder color={Color.WHITE}>
                 Welcome to All
               </Label>
+              </Animatable.View>
+              <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
+
               <View style={CommonStyle.boxContainer}>
-                <View style={styles.tabScreen}>
-                  <TouchableOpacity
-                    onPress={() =>
-                      this.props.navigation.navigate(Routes.SignIn)
-                    }>
-                    <Label
-                      bolder
-                      color={Color.DARK_MODERATE_BLUE}
-                      align="right">
-                      Sign In
-                    </Label>
-                  </TouchableOpacity>
-                  <View
-                    style={{
-                      borderBottomWidth: 4,
-                      borderBottomColor: Color.APPLE,
-                      width: '45%',
-                    }}>
-                    <Label bolder color={Color.DARK_BLUE} align="center" mb={5}>
-                      Sign Up
-                    </Label>
-                  </View>
-                </View>
+              <View
+                style={CommonStyle.tabScreen}>
+                <TouchableOpacity
+                  onPress={() => {
+                    this.props.navigation.push(Routes.SignIn);
+                  }}>
+                  <Label large ph={30}  bolder color={Color.DARK_MODERATE_BLUE}>
+                    Sign In
+                  </Label>
+                </TouchableOpacity>
+                  <Label large ph={30} border={3} pb={5} borderColor={Color.APPLE} bolder color={Color.DARK_BLUE}>
+                    Sign Up
+                  </Label>
+               
+              </View>
 
                 <InputContainer
                   iconName="person"
@@ -129,7 +118,7 @@ export class SignUp extends Component {
                   <Label small mt={5} mb={5} color={Color.ERROR}>
                     {this.state.nameError}
                   </Label>
-                ) : null}
+                ) : <Label></Label>}
 
                 <InputContainer
                   iconName="email"
@@ -141,40 +130,30 @@ export class SignUp extends Component {
                   <Label small mt={5} mb={5} color={Color.ERROR}>
                     {this.state.emailError}
                   </Label>
-                ) : null}
+                ) : <Label></Label>}
 
                 <InputContainer
                   iconName="phone"
                   placeholder="Enter Mobile Number"
                   iconColor={Color.PRIMARY}
+                  maxLength={10}
                   onChangeText={text => this.setState({phone: text})}
                 />
                 {this.state.phoneError != null ? (
                   <Label small mt={5} mb={5} color={Color.ERROR}>
                     {this.state.phoneError}
                   </Label>
-                ) : null}
+                ) : <Label></Label>}
 
                 <SubmitButton
                   onPress={() => {
-                    // this.check_IsNull();
                     this.handleOnSubmit();
                   }}
                   buttonText="Sign Up"
                 />
-                {/* <TouchableOpacity style={{flexDirection:'row',justifyContent:'center'}} onPress={()=>this.props.navigation.navigate(Routes.SignIn)}>
-                    <Label
-                      mt={15}
-                      color={Color.BLUE_MAGENTA}
-                      small>
-                      Already have an account?{' '}
-                    </Label>
-                    <Label  color={Color.DARK_BLUE}
-                      small mt={15}>
-                      SIGN IN
-                    </Label>
-                  </TouchableOpacity> */}
+            
               </View>
+              </Animatable.View>
             </View>
             {/* <View style={{marginVertical: 30}}>
               {this.state.showToast ? (

@@ -21,8 +21,10 @@ const styles = StyleSheet.create({
       }, 
       btnImage: {
 
-        width: 25,
-        height: 20,
+        
+        width:ThemeUtils.relativeWidth(5),
+        
+        height:ThemeUtils.relativeHeight(3),
         marginLeft: 20,
       },
       btnName: {

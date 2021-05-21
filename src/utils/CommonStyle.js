@@ -4,10 +4,21 @@ import Color from './Color'
 import ThemeUtils from './ThemeUtils'
 
 const styles = StyleSheet.create({
-  logo: {
-    height: 110,
-    width: '80%',
+  container:{
+    flex: 1,  
+    justifyContent: 'center',  
+    alignItems: 'center',
   },
+  // logo: {
+  //   height: 110,
+  //   width: '80%',
+  // },
+  tabScreen:{
+    flexDirection:'row',
+    justifyContent:'space-evenly',
+    marginBottom:15
+  }  ,
+  
   boxContainer:{
     // width:'100%', 
     marginTop:20,
@@ -16,6 +27,7 @@ const styles = StyleSheet.create({
     paddingVertical:20,
     backgroundColor:Color.WHITE,
     borderRadius:12,
+    marginHorizontal:20
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               },
    linearGradient: {
         width: '100%',

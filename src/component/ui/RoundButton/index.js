@@ -6,8 +6,7 @@ import {
     Text,
 } from 'react-native';
 
-import COLOR from "../../../utils/Color";
-//import {fontXSmall, fontSmall, fontNormal, fontLarge, fontXLarge} from 'src/utils/theme';
+import Color from "../../../utils/Color";
 import Theme from "../../../utils/ThemeUtils"
 import PropTypes from 'prop-types';
 
@@ -80,8 +79,8 @@ const RoundButton = (props) => {
 
 RoundButton.defaultProps = {
     ...TouchableHighlight.defaultProps,
-    textColor: COLOR.WHITE,
-    backgroundColor: COLOR.PRIMARY,
+    textColor: Color.WHITE,
+    backgroundColor: Color.PRIMARY,
     btn_xs: false,
     btn_sm: false,
     btn_lg: false,

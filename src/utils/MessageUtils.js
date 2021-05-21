@@ -9,10 +9,11 @@ const Errors = {
     pwdLengthMinimum: "Password must be atleast 6 characters",
     pwdMisMatch: "Password not match",
 
-    phoneBlank: 'Phone number is required',
-    phoneInvalid: 'Phone number is invalid',
-    phoneTooLong: 'Phone number  exceed limit',
-    phoneTooShort: 'Phone number is too short',
+    phoneBlank: 'Mobile number is required',
+    phoneInvalid: 'Mobile number is invalid',
+    phonePattern: 'Mobile Number must be start with 6 or 7 or 8 or 9 ',
+    phoneTooLong: 'Mobile number  exceed limit',
+    phoneTooShort: 'Mobile number is too short',
 
     serverError: "Something went wrong.Please try again.",
     internetError: "Internet not available.",

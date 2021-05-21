@@ -16,7 +16,7 @@ const Color={
     ALICE_BLUE:'#f2f4f5',
     TEXT_PRIMARY:'#f2f4f5',
     DARK_BLUE:'#182b56',
-    BLUE_MAGENTA:'#6f6e92',
+    DARK_GRAYISH_BLUE:'#6f6e92',
     SUCCESS:'#00FF00',
     PURE_CYAN:'#00d2ff',
     INTRO_COLOR:'#28388f',
@@ -28,6 +28,8 @@ const Color={
     WHITE_SMOKE:'#F5F4F2',
     GRADIENT1:'#29B76D',
     GRADIENT2:'#2A97A6',
+    GRADIENT3:'#6DC999',
+    GRADIENT4:'#73BFC9'
    
 }
 

@@ -2,31 +2,22 @@ import React, {Component} from 'react';
 import {
   KeyboardAvoidingView,
   SafeAreaView,
-  Text,
   View,
-  TouchableOpacity,
-  Image,
-  Alert,
-  LogBox,
+  StatusBar,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from '../SignIn/style';
 import Color from '../../utils/Color';
 import {
   InputContainer,
-  SubmitButton,
   Label,
-  ToastMessage,
-  BottomSheet,
+  Logo,
   RoundButton,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation,PasswordValidate} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
-// import Toast from 'react-native-toast-message'
-import logo from '../../assets/images/foodoorer2.png';
-import ThemeUtils from '../../utils/ThemeUtils';
+import * as Animatable from 'react-native-animatable'
 
 export class ResetPassword extends Component {
   constructor(props) {
@@ -37,44 +28,60 @@ export class ResetPassword extends Component {
       confirmPassword: '',
       passwordError: '',
       confirmPasswordError: '',
-
-      showToast: false,
+      isSecurePassword:true,
+      isSecureConfirmPassword:true,
+      // showToast: false,
+      toggleIcon1:'eye',
+      toggleIcon2:'eye'
     };
   }
 
-  handleOnSubmit = () => {
+  handleOnSubmit=()=>{
     let passwordError,confirmPasswordError;
-    let isValide = true;
-
-    passwordError = validation('password', this.state.password);
+    let isValid;
+    passwordError = validation('password',this.state.password);
     confirmPasswordError = PasswordValidate(this.state.password,this.state.confirmPassword)
 
-    if (passwordError != null||confirmPasswordError!=null) {
-      console.log('errors ');
+    if (passwordError!=null || confirmPasswordError!=null){
+      console.log("validation Error in Reset password")
       this.setState(
         {
-          passwordError: passwordError,
+          passwordError:passwordError,
           confirmPasswordError:confirmPasswordError,
-          showToast: true,
-        },
-        () => {
-          setTimeout(() => {
-            this.setState({showToast: false});
-          }, 2500);
         },
       );
-    } else {
-        alert('Password reset successfully!')
-      this.props.navigation.navigate(Routes.SignIn);
+      isValid = false;
     }
+    else{
+      console.log('Reset password Done')
+      this.setState({
+        passwordError:'',
+        confirmPasswordError:'',
+      });
+      isValid=true;
+    }
+    if(isValid){
+      this.props.navigation.navigate(Routes.SignIn)
+    }
+  }
+
+  handlePasswordToggle = () => {
+    this.state.isSecurePassword
+      ? this.setState({isSecurePassword: false, toggleIcon1: 'eye-closed'})
+      : this.setState({isSecurePassword: true, toggleIcon1: 'eye'});
+  };
+  handleConfirmPasswordToggle = () => {
+    this.state.isSecureConfirmPassword
+      ? this.setState({isSecureConfirmPassword: false, toggleIcon2: 'eye-closed'})
+      : this.setState({isSecureConfirmPassword: true, toggleIcon2: 'eye'});
   };
 
   render(props) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={CommonStyle.container}>
+      <StatusBar hidden={false}/>
         <LinearGradient
-          // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
-          colors={[Color.GRADIENT1, Color.GRADIENT2]}
+          colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -83,17 +90,14 @@ export class ResetPassword extends Component {
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
             <View>
+            <Animatable.View animation="fadeInLeft" iterationDelay={400}>
+            <Logo/>
+            </Animatable.View>
+            <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
+
               <View style={CommonStyle.boxContainer}>
-                {/* <Image
-                  source={logo}
-                  style={{
-                    alignSelf: 'center',
-                    marginBottom: 15,
-                    height: ThemeUtils.relativeHeight(12),
-                    width: ThemeUtils.relativeWidth(50),
-                  }}
-                /> */}
-                <Label color={Color.BLACK} xlarge>
+               
+                <Label color={Color.PRIMARY} align='center' xlarge>
                   Reset Password
                 </Label>
 
@@ -104,9 +108,11 @@ export class ResetPassword extends Component {
                 <InputContainer
                   iconName="lock"
                   placeholder="Enter Password"
-                  iconColor={Color.BLACK}
+                  iconColor={Color.PRIMARY}
                   onChangeText={text => this.setState({password: text})}
-                  extraIconName='eye'
+                  extraIconName={this.state.toggleIcon1}
+                  secureText={this.state.isSecurePassword}
+                  onToggle={()=>this.handlePasswordToggle()}
                 />
 
               {this.state.passwordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.passwordError}</Label>:<Label></Label>}
@@ -115,11 +121,13 @@ export class ResetPassword extends Component {
                 <InputContainer
                     iconName='lock'
                     placeholder='Re-type Password'
-                    iconColor={Color.BLACK}
+                    iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({confirmPassword:text})}
-                    extraIconName='eye'
+                    extraIconName={this.state.toggleIcon2}
+                    secureText={this.state.isSecureConfirmPassword}
+                    onToggle={()=>this.handleConfirmPasswordToggle()}
                 />
-            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={50} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:null}
+            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:<Label></Label>}
 
                 <RoundButton
                   onPress={() => {
@@ -130,12 +138,13 @@ export class ResetPassword extends Component {
                   Reset Password
                 </RoundButton>
               </View>
+              </Animatable.View>
             </View>
-            <View style={{marginVertical: 30}}>
+            {/* <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
                 <ToastMessage text={this.state.confirmPasswordError} />
               ) : null}
-            </View>
+            </View> */}
           </KeyboardAvoidingView>
         </LinearGradient>
       </SafeAreaView>

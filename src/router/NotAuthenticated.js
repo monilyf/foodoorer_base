@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Routes from './routes';
 import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp'
-import IntroScreen from '../screens/IntroScreen'
+import Onboarding from '../screens/Onboarding'
 import ForgotPassword from '../screens/ForgotPassword'
 import OtpScreen from '../screens/ForgotPassword/OtpScreen'
 import ResetPassword from '../screens/ForgotPassword/ResetPassword';
@@ -17,8 +17,8 @@ const NonAuthenticated = () => {
   return (
     <Stack.Navigator >
       <Stack.Screen
-      name={Routes.IntroScreen}
-      component={IntroScreen}
+      name={Routes.Onboarding}
+      component={Onboarding}
       options={{headerShown: false}}
 
       />

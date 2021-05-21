@@ -2,16 +2,11 @@ import React, {Component} from 'react';
 import {
   KeyboardAvoidingView,
   SafeAreaView,
-  Text,
   View,
   TouchableOpacity,
-  Image,
-  Alert,
-  LogBox,
-  Button,
+  StatusBar,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import styles from './style';
 import Color from '../../utils/Color';
 import {
   InputContainer,
@@ -19,15 +14,13 @@ import {
   SubmitButton,
   Label,
   SocialButton,
-  ToastMessage,
-  TabNav,
+  Logo,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
-import ThemeUtils from '../../utils/ThemeUtils';
-import logo from '../../assets/images/foodoorer2.png';
+import * as Animatable from 'react-native-animatable';
 
 export class SignIn extends Component {
   constructor(props) {
@@ -51,37 +44,37 @@ export class SignIn extends Component {
   };
 
   handleOnSubmit = () => {
-    this.setState(
-      {
-        emailError: validation('email', this.state.email),
-        showToast: true,
-        passwordError: validation('password', this.state.password),
-      },
-      () => {
-        setTimeout(() => {
-          this.setState({showToast: false});
-        }, 2500);
-      },
-    );
-    if (this.state.email == '') {
-      alert('please fill email ');
-    } else if (this.state.emailError != null || this.state.passwordError !=null) {
-      // alert(this.state.emailError)
-      this.props.navigation.navigate(Routes.SignIn);
-    } else {
-      login_data = 'login';
-      AsyncStorage.setItem('login_data', JSON.stringify(login_data));
-      console.log('login_data from :', login_data);
+    let emailError, passwordError;
+    let isValid;
+    emailError = validation('email', this.state.email);
+    passwordError = validation('password', this.state.password);
 
-      this.props.navigation.navigate(Routes.Auth, {email: this.state.email});
+    if (emailError != null || passwordError != null) {
+      console.log('validation Error in Sign In');
+      this.setState({
+        emailError: emailError,
+        passwordError: passwordError,
+      });
+      isValid = false;
+    } else {
+      console.log('Sign In Done');
+      this.setState({
+        emailError: '',
+        passwordError: '',
+      });
+      isValid = true;
+    }
+    if (isValid) {
+      this.props.navigation.navigate(Routes.Home);
     }
   };
 
   render(props) {
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={CommonStyle.container}>
+        <StatusBar hidden={true} />
         <LinearGradient
-          colors={['#6DC999', '#73BFC9']}
+          colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
@@ -89,108 +82,108 @@ export class SignIn extends Component {
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}>
-            <View style={{marginTop:-20}}>
-
-                <Image source={logo} style={{alignSelf:'center',marginBottom:15,height:ThemeUtils.relativeHeight(12),width:ThemeUtils.relativeWidth(50)}}/>
-                <Label align='center' color={Color.WHITE} bolder xxlarge>
+            <View style={{marginTop: -20}}>
+              <Animatable.View animation="fadeInLeft" iterationDelay={400}>
+                <Logo />
+                <Label align="center" color={Color.WHITE} bolder xxlarge>
                   Welcome
                 </Label>
+              </Animatable.View>
+              <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
+                <View style={CommonStyle.boxContainer}>
+                  {/* <TabNav/> */}
 
-              <View style={CommonStyle.boxContainer}>
-                {/* <TabNav/> */}
-                <View style={styles.tabScreen}>
-                  <View
-                    style={{
-                      borderBottomWidth: 4,
-                      borderBottomColor: Color.APPLE,
-                      width: '50%',
-                    }}
-                    >
-                    <Label bolder  color={Color.DARK_BLUE} align="center" mb={5}>
+                  <View style={CommonStyle.tabScreen}>
+                    <Label
+                      large
+                      ph={30}
+                      bolder
+                      border={3}
+                      pb={5}
+                      borderColor={Color.APPLE}
+                      color={Color.DARK_BLUE}>
                       Sign In
                     </Label>
+                    <TouchableOpacity
+                      onPress={() => {
+                        this.props.navigation.push(Routes.SignUp);
+                      }}>
+                      <Label
+                        large
+                        ph={30}
+                        bolder
+                        color={Color.DARK_MODERATE_BLUE}>
+                        Sign Up
+                      </Label>
+                    </TouchableOpacity>
                   </View>
-                  {/* <Label bolder color={Color.DARK_MODERATE_BLUE} >Sign Up</Label> */}
+
+                  <InputContainer
+                    iconName="email"
+                    placeholder="Enter Email"
+                    iconColor={Color.PRIMARY}
+                    onChangeText={text => this.setState({email: text})}
+                  />
+                  {this.state.emailError != null ? (
+                    <Label small mt={5} mb={5} color={Color.ERROR}>
+                      {this.state.emailError}
+                    </Label>
+                  ) : (
+                    <Label></Label>
+                  )}
+                  <InputContainer
+                    iconName="lock"
+                    placeholder="Enter Password"
+                    iconColor={Color.PRIMARY}
+                    onChangeText={text => this.setState({passwod: text})}
+                    extraIconName={this.state.toggleIcon}
+                    secureText={this.state.isSecurePassword}
+                    onToggle={() => this.handleToggle()}
+                  />
+                  {this.state.passwordError != null ? (
+                    <Label small mt={5} mb={5} color={Color.ERROR}>
+                      {this.state.passwordError}
+                    </Label>
+                  ) : (
+                    <Label></Label>
+                  )}
+
+                  <SubmitButton
+                    onPress={() => {
+                      // this.check_IsNull();
+                      this.handleOnSubmit();
+                    }}
+                    buttonText="Sign In"
+                  />
                   <TouchableOpacity
+                    style={{marginTop: 10, alignSelf: 'flex-end'}}
                     onPress={() =>
-                      this.props.navigation.navigate(Routes.SignUp)
+                      this.props.navigation.navigate(Routes.ForgotPassword)
                     }>
-                    <Label
-                      bolder
-                      color={Color.DARK_MODERATE_BLUE}
-                      align="right">
-                      Sign Up
+                    <Label small color={Color.DARK_BLUE} align="right" me={5}>
+                      Forgot Password ?
                     </Label>
                   </TouchableOpacity>
+                  <OrSection />
+
+                  <View
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'space-evenly',
+                    }}>
+                    <SocialButton
+                      buttonText="Facebook"
+                      backgroundColor="red"
+                      image={require('../../assets/images/facebook.png')}
+                    />
+
+                    <SocialButton
+                      buttonText="Google    "
+                      image={require('../../assets/images/google.png')}
+                    />
+                  </View>
                 </View>
-               
-
-                {/* <Label color={Color.DARK_GRAY} mt={5} small>
-                  Enter your email id to proceed
-                </Label> */}
-
-                <InputContainer
-                  iconName="email"
-                  placeholder="Enter Email"
-                  iconColor={Color.PRIMARY}
-                  onChangeText={text => this.setState({email: text})}
-                />
-                {this.state.emailError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.emailError}</Label>:null}
-                <InputContainer
-                  iconName="lock"
-                  placeholder="Enter Password"
-                  iconColor={Color.PRIMARY}
-                  onChangeText={text => this.setState({passwod: text})}
-                  extraIconName={this.state.toggleIcon}
-                  secureText={this.state.isSecurePassword}
-                  onToggle={() => this.handleToggle()}
-                />
-                {this.state.passwordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.passwordError}</Label>:null}
-
-
-                <SubmitButton
-                  onPress={() => {
-                    // this.check_IsNull();
-                    this.handleOnSubmit();
-                  }}
-                  buttonText="Sign In"
-                />
-                <TouchableOpacity
-                  style={{marginTop: 10, alignSelf: 'flex-end'}}
-                  onPress={() =>
-                    this.props.navigation.navigate(Routes.ForgotPassword)
-                  }>
-                  <Label small color={Color.DARK_BLUE} align="right" me={5}>
-                    Forgot Password ?
-                  </Label>
-                </TouchableOpacity>
-                <OrSection />
-
-                <View style={{flexDirection: 'row'}}>
-                  <SocialButton
-                    buttonText="Facebook"
-                    backgroundColor="red"
-                    image={require('../../assets/images/facebook.png')}
-                  />
-                  <View style={{margin: 5}}></View>
-
-                  <SocialButton
-                    buttonText="Google    "
-                    image={require('../../assets/images/google.png')}
-                  />
-                </View>
-
-                {/* <TouchableOpacity
-                  style={{flexDirection: 'row', justifyContent: 'center'}}
-                  onPress={() => this.props.navigation.navigate(Routes.SignUp)}>
-                  <Label mt={15} color={Color.BLUE_MAGENTA} small>
-                    Don't have an account?{' '}
-                  </Label>
-                  <Label color={Color.DARK_BLUE} small mt={15}>
-                    SIGN UP
-                  </Label>
-                </TouchableOpacity> */}
-              </View>
+              </Animatable.View>
             </View>
             {/* <View style={{marginVertical: 30}}>
               {this.state.showToast ? (
