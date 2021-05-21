@@ -16,7 +16,7 @@ const Header = (props) => {
                 <Icon name='cart' size={26} color={Color.WHITE}/>
 
             </View>
-<View style={{backgroundColor:'#fff',height:21,width:'90%',bottom:20,alignSelf:'center',borderRadius:10}}></View>
+{/* <View style={{backgroundColor:'#fff',height:21,width:'90%',bottom:20,alignSelf:'center',borderRadius:10}}></View> */}
 
         </View>
     )

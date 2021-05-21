@@ -63,6 +63,9 @@ export class SignUp extends Component {
       isValid=true;
     }
     if(isValid){
+      let register_data = {name:this.state.name,email:this.state.email,phone:this.state.phone}
+      AsyncStorage.setItem('register_data',JSON.stringify(register_data))
+      console.log('register_data:',register_data)
       this.props.navigation.navigate(Routes.SignIn)
     }
   }
@@ -102,7 +105,7 @@ export class SignUp extends Component {
                     Sign In
                   </Label>
                 </TouchableOpacity>
-                  <Label large ph={30} border={3} pb={5} borderColor={Color.APPLE} bolder color={Color.DARK_BLUE}>
+                  <Label large ph={30} border={4} pb={5} borderColor={Color.APPLE} bolder color={Color.DARK_BLUE}>
                     Sign Up
                   </Label>
                
@@ -110,7 +113,7 @@ export class SignUp extends Component {
 
                 <InputContainer
                   iconName="person"
-                  placeholder="Enter Your Name"
+                  placeholder="Enter Name"
                   iconColor={Color.PRIMARY}
                   onChangeText={text => this.setState({name: text})}
                 />
@@ -133,8 +136,8 @@ export class SignUp extends Component {
                 ) : <Label></Label>}
 
                 <InputContainer
-                  iconName="phone"
-                  placeholder="Enter Mobile Number"
+                  iconName="phone-android"
+                  placeholder="Enter Mobile No."
                   iconColor={Color.PRIMARY}
                   maxLength={10}
                   onChangeText={text => this.setState({phone: text})}

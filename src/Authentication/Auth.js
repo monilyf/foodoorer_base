@@ -10,13 +10,14 @@ export class Auth extends Component {
     super(props);
     this.state = {
       email: '',
+      password:'',
    
     };
   }
 
   componentDidMount() {
-    const {email} = this.props.route.params;
-    this.setState({email: email});
+    const {email,password} = this.props.route.params;
+    this.setState({email: email,password:password});
 
 
 
@@ -34,14 +35,15 @@ export class Auth extends Component {
 
   checkAuthentication = async () => {
     try {
-      let user = await AsyncStorage.getItem('login_data');
+      let user = await AsyncStorage.getItem('register_data');
       let parsed = JSON.parse(user);
+      console.log(parsed.email,parsed.password)
 
-      if (parsed!=null)
+      if (parsed.email===this.state.email )
         // this.state.isAuthenticated=true;
         this.props.navigation.dispatch(this.resetToAuth);
       else {
-        alert('Email not valid');
+        alert("You don't have account");
         this.props.navigation.navigate(Routes.SignIn);
       }
     } catch (error) {

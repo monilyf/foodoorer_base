@@ -29,7 +29,7 @@ const Onboarding = ({navigation}) => {
           key: 's2',
           title: 'Add Address and\nChoose Payment Method',
           text: 'Secure Payment & Food at your door step',
-          image : require('../../assets/images/img3.png'),
+          image : require('../../assets/images/img2.png'),
         },
         {
           key: 's3',

@@ -13,7 +13,7 @@ const HomeNavigator = () => {
     <Tab.Navigator
       initialRouteName="Home"
       activeColor={Color.DARK_BLUE}
-      inactiveColor={Color.BLUE_MAGENTA}>
+      inactiveColor={Color.DARK_GRAYISH_BLUE}>
       {/* <Tab.Screen name="HomeScreen" component={HomeScreen} /> */}
       <Tab.Screen
         name="Explore"

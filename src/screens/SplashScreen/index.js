@@ -67,22 +67,22 @@ class SplashScreen extends Component  {
 render(){
     return (
       // <SafeAreaView style={styles.container}>
-      <LinearGradient
-      colors={[Color.GRADIENT3, Color.GRADIENT4]}
-      start={{x: 0, y: 1}}
-      end={{x: 1, y: 0}}
-      style={CommonStyle.linearGradient}>
+      // <LinearGradient
+      // colors={[Color.GRADIENT3, Color.GRADIENT4]}
+      // start={{x: 0, y: 1}}
+      // end={{x: 1, y: 0}}
+      // style={CommonStyle.linearGradient}>
         <View style={[styles.SplashScreen_RootView,CommonStyle.container]}>
        <StatusBar hidden={true}/>
        <Image source={logo} style={styles.logo}/>
        
   
       <View style={styles.footer}>
-        <Label color={Color.BLUE_MAGENTA}>{' '}By Team{"\n"}Foodoorer</Label>
+        <Label color={Color.DARK_GRAYISH_BLUE}>{' '}By Team{"\n"}Foodoorer</Label>
       </View>
      
     </View>
- </LinearGradient>
+//  </LinearGradient>
     );
   }
 }

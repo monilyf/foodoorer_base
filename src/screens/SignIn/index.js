@@ -31,7 +31,7 @@ export class SignIn extends Component {
       emailError: '',
       password: '',
       passwordError: '',
-      showToast: false,
+      // showToast: false,
       toggleIcon: 'eye',
       isSecurePassword: true,
     };
@@ -50,7 +50,7 @@ export class SignIn extends Component {
     passwordError = validation('password', this.state.password);
 
     if (emailError != null || passwordError != null) {
-      console.log('validation Error in Sign In');
+      console.log('validation Error in Sign In',this.state.password);
       this.setState({
         emailError: emailError,
         passwordError: passwordError,
@@ -65,7 +65,7 @@ export class SignIn extends Component {
       isValid = true;
     }
     if (isValid) {
-      this.props.navigation.navigate(Routes.Home);
+      this.props.navigation.navigate(Routes.Auth,{email:this.state.email,password:this.state.password});
     }
   };
 
@@ -98,7 +98,7 @@ export class SignIn extends Component {
                       large
                       ph={30}
                       bolder
-                      border={3}
+                      border={4}
                       pb={5}
                       borderColor={Color.APPLE}
                       color={Color.DARK_BLUE}>
@@ -135,7 +135,7 @@ export class SignIn extends Component {
                     iconName="lock"
                     placeholder="Enter Password"
                     iconColor={Color.PRIMARY}
-                    onChangeText={text => this.setState({passwod: text})}
+                    onChangeText={text => this.setState({password: text})}
                     extraIconName={this.state.toggleIcon}
                     secureText={this.state.isSecurePassword}
                     onToggle={() => this.handleToggle()}
@@ -173,7 +173,6 @@ export class SignIn extends Component {
                     }}>
                     <SocialButton
                       buttonText="Facebook"
-                      backgroundColor="red"
                       image={require('../../assets/images/facebook.png')}
                     />
 
