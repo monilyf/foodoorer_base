@@ -75,7 +75,7 @@ const Onboarding = ({navigation}) => {
 
         <Image
           style={styles.introImageStyle}
-          source={item.image} />
+          source={item.image} resizeMode='contain' />
       
       <Label align='center' normal color={Color.DARK_MODERATE_BLUE}>{item.text}</Label>
 
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   introImageStyle: {
     // width: '100%',
     // height: 200,
-    width:ThemeUtils.relativeWidth(82),
+    width:ThemeUtils.relativeWidth(90),
     height:ThemeUtils.relativeHeight(30)
   },
   dotStyle: {

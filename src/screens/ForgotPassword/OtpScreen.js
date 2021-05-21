@@ -4,7 +4,8 @@ import {
   SafeAreaView,
   View,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import otpStyle from './style'
@@ -67,6 +68,7 @@ export class OtpScreen extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
+      <StatusBar hidden={true}/>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
           colors={[Color.GRADIENT3,Color.GRADIENT4 ]}

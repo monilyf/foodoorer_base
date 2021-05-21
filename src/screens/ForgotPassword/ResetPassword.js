@@ -79,7 +79,7 @@ export class ResetPassword extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-      <StatusBar hidden={false}/>
+      <StatusBar hidden={true}/>
         <LinearGradient
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
@@ -107,7 +107,7 @@ export class ResetPassword extends Component {
 
                 <InputContainer
                   iconName="lock"
-                  placeholder="Enter Password"
+                  placeholder="Enter password"
                   iconColor={Color.PRIMARY}
                   onChangeText={text => this.setState({password: text})}
                   extraIconName={this.state.toggleIcon1}
@@ -115,19 +115,19 @@ export class ResetPassword extends Component {
                   onToggle={()=>this.handlePasswordToggle()}
                 />
 
-              {this.state.passwordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.passwordError}</Label>:<Label></Label>}
+              {this.state.passwordError!=null?<Label small mt={5} mb={5} ms={21} color={Color.ERROR}>{this.state.passwordError}</Label>:<Label></Label>}
 
 
                 <InputContainer
                     iconName='lock'
-                    placeholder='Re-type Password'
+                    placeholder='Re-type password'
                     iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({confirmPassword:text})}
                     extraIconName={this.state.toggleIcon2}
                     secureText={this.state.isSecureConfirmPassword}
                     onToggle={()=>this.handleConfirmPasswordToggle()}
                 />
-            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={5} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:<Label></Label>}
+            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={5} ms={21} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:<Label></Label>}
 
                 <RoundButton
                   onPress={() => {

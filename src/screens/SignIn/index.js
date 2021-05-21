@@ -14,6 +14,7 @@ import {
   SubmitButton,
   Label,
   SocialButton,
+  ToastMessage,
   Logo,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -31,7 +32,7 @@ export class SignIn extends Component {
       emailError: '',
       password: '',
       passwordError: '',
-      // showToast: false,
+      showToast: false,
       toggleIcon: 'eye',
       isSecurePassword: true,
     };
@@ -52,10 +53,17 @@ export class SignIn extends Component {
     if (emailError != null || passwordError != null) {
       console.log('validation Error in Sign In',this.state.password);
       this.setState({
-        emailError: emailError,
-        passwordError: passwordError,
-      });
-      isValid = false;
+        emailError:emailError,
+        passwordError:passwordError,
+        showToast:true,}
+            // ,() => {
+            //     setTimeout(() => {
+            //       this.setState({showToast: false});
+            //     }, 2500);
+      //  }
+    )
+    isValid=false;
+
     } else {
       console.log('Sign In Done');
       this.setState({
@@ -120,12 +128,13 @@ export class SignIn extends Component {
 
                   <InputContainer
                     iconName="email"
-                    placeholder="Enter Email"
+                    placeholder="Enter email"
+                    keyboardType='email-address'
                     iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({email: text})}
                   />
                   {this.state.emailError != null ? (
-                    <Label small mt={5} mb={5} color={Color.ERROR}>
+                    <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                       {this.state.emailError}
                     </Label>
                   ) : (
@@ -133,7 +142,7 @@ export class SignIn extends Component {
                   )}
                   <InputContainer
                     iconName="lock"
-                    placeholder="Enter Password"
+                    placeholder="Enter password"
                     iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({password: text})}
                     extraIconName={this.state.toggleIcon}
@@ -141,7 +150,7 @@ export class SignIn extends Component {
                     onToggle={() => this.handleToggle()}
                   />
                   {this.state.passwordError != null ? (
-                    <Label small mt={5} mb={5} color={Color.ERROR}>
+                    <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                       {this.state.passwordError}
                     </Label>
                   ) : (
@@ -184,7 +193,7 @@ export class SignIn extends Component {
                 </View>
               </Animatable.View>
             </View>
-            {/* <View style={{marginVertical: 30}}>
+            {/* <View >
               {this.state.showToast ? (
                 <ToastMessage text="Please fill all the Fields Properly" />
               ) : null}

@@ -61,7 +61,7 @@ export class ForgotPassword extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-        <StatusBar hidden={false} />
+        <StatusBar hidden={true} />
         <LinearGradient
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
@@ -90,12 +90,12 @@ export class ForgotPassword extends Component {
 
                   <InputContainer
                     iconName="email"
-                    placeholder="Enter Email"
+                    placeholder="Enter email"
                     iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({email: text})}
                   />
                   {this.state.emailError != null ? (
-                    <Label small mt={5} mb={5} color={Color.ERROR}>
+                    <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                       {this.state.emailError}
                     </Label>
                   ) : null}

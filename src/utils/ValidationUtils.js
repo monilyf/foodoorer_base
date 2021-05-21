@@ -45,10 +45,7 @@ let constraints = {
     numericality: {
       notValid: Message.Errors.phoneInvalid,
     },
-    format: {
-      pattern: /^[0]?[6789]\d{9}$/,
-      message: Message.Errors.phonePattern,
-    },
+    
     length: {
       maximum: 10,
       minimum: 10,

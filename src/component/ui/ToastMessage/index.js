@@ -17,11 +17,11 @@ class ToastMessage extends Component{
                 content={
                     <View style={styles.container}>
      <View style={styles.subContainer}>
-     <View style={styles.column}></View>
+     {/* <View style={styles.column}></View> */}
      <View style={styles.content}>
        
-        <View style={styles.toastMsg}><Icon name='alert-circle' size={18} color={Color.DARK_BLUE}/>
-        <Label color={Color.DARK_BLUE} ms={12} small>{this.props.text}</Label>
+        <View style={styles.toastMsg}><Icon name='alert-circle' size={20} color={Color.DARK_BLUE}/>
+        <Label color={Color.DARK_BLUE} ms={12} >{this.props.text}</Label>
         </View>
       </View>
      </View>
@@ -44,8 +44,9 @@ export default ToastMessage
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:60,backgroundColor:Color.WHITE,width:'100%',
-        alignSelf:'center',marginRight:25
+        marginTop:75,backgroundColor:'#d3e0ea',width:'100%',
+        alignSelf:'center',paddingVertical:10,borderRadius:12
+        ,marginLeft:22
     },
     subContainer:{
         flexDirection:'row',height:30

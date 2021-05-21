@@ -13,6 +13,7 @@ import {
   SubmitButton,
   Label,
   Logo,
+  ToastMessage,Error,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
@@ -31,7 +32,7 @@ export class SignUp extends Component {
       emailError: '',
       phone: '',
       phoneError: '',
-      showToast: false,
+      // showToast: false,
     };
   }
 
@@ -49,7 +50,13 @@ export class SignUp extends Component {
           emailError:emailError,
           nameError:nameError,
           phoneError:phoneError,
-        },
+          // showToast: true
+        },  
+    //      () => {
+    //            setTimeout(() => {
+    //              this.setState({showToast: false});
+    //            }, 2500);
+    //  }
       );
       isValid = false;
     }
@@ -113,37 +120,40 @@ export class SignUp extends Component {
 
                 <InputContainer
                   iconName="person"
-                  placeholder="Enter Name"
+                  placeholder="Enter name"
                   iconColor={Color.PRIMARY}
                   onChangeText={text => this.setState({name: text})}
                 />
                 {this.state.nameError != null ? (
-                  <Label small mt={5} mb={5} color={Color.ERROR}>
+                  <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                     {this.state.nameError}
                   </Label>
                 ) : <Label></Label>}
+                  {/* <Error>{this.state.nameError}</Error> */}
 
                 <InputContainer
                   iconName="email"
-                  placeholder="Enter Email"
+                  placeholder="Enter email"
+                  keyboardType='email-address'
                   iconColor={Color.PRIMARY}
                   onChangeText={text => this.setState({email: text})}
                 />
                 {this.state.emailError != null ? (
-                  <Label small mt={5} mb={5} color={Color.ERROR}>
+                  <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                     {this.state.emailError}
                   </Label>
                 ) : <Label></Label>}
 
                 <InputContainer
                   iconName="phone-android"
-                  placeholder="Enter Mobile No."
+                  placeholder="Enter mobile "
                   iconColor={Color.PRIMARY}
-                  maxLength={10}
+                  // maxLength={10}
+                  keyboardType='phone-pad'
                   onChangeText={text => this.setState({phone: text})}
                 />
                 {this.state.phoneError != null ? (
-                  <Label small mt={5} mb={5} color={Color.ERROR}>
+                  <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
                     {this.state.phoneError}
                   </Label>
                 ) : <Label></Label>}
@@ -158,7 +168,7 @@ export class SignUp extends Component {
               </View>
               </Animatable.View>
             </View>
-            {/* <View style={{marginVertical: 30}}>
+            {/* <View >
               {this.state.showToast ? (
                 <ToastMessage text="Please fill all the Fields Properly" />
               ) : (
