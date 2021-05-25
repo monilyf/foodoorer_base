@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from '../Home'
 import Color from '../../utils/Color'
 import Profile from '../../screens/Profile'
+import Routes from '../../router/routes';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -50,7 +51,7 @@ const HomeNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Profile"
+        name={Routes.Profile}
         component={Profile}
         options={{
           tabBarLabel: 'Profile',

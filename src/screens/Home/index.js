@@ -27,21 +27,14 @@ export class Home extends Component {
 
   render() {
     return (
-      <SafeAreaView >
-      <StatusBars hidden={false} barStyle='dark-content'/>
-      <Header headerText='Home'/>
-      <View style={{justifyContent:'center',alignItems:'center'}}>
-        {/* <Text> Home </Text> */}
-        <Label  color='black' mt={20} bolder >Home screen.</Label>
-        <SubmitButton buttonText='Logout' onPress={()=>this.removeAuthentication()}/>
-         {/* <View style={{marginVertical: 30}}>
-  
-                <ToastMessage text="Hey Mansi" />
-             
-           
-            </View> */}
-        {/* <RoundButton mt={20} backgroundColor={Color.BLUE_MAGENTA} btn_lg textColor={Color.ALICE_BLUE} onPress={()=>console.log('manya')}>Hello Round</RoundButton> */}
-        {/* <FloatingActionButton color={Color.BLUE_MAGENTA} icon='architecture' left ms={50} onPress={()=>console.log('manva')} iconColor='#a5fd07' iconSize={40}/> */}
+      <SafeAreaView>
+      <StatusBars
+        hidden={false}
+        barStyle="dark-content"
+        backgroundColor={Color.WHITE}
+      />
+      <View style={styles.container}>
+      
       </View>
       </SafeAreaView>
     )

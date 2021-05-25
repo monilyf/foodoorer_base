@@ -5,8 +5,8 @@ const styles = StyleSheet.create({
   container:{
     backgroundColor:Color.WHITE,
     paddingBottom:8,
-    borderBottomStartRadius:15,
-    borderBottomEndRadius:15
+    borderBottomStartRadius:18,
+    borderBottomEndRadius:18
 
   },
   profileHeader: {
@@ -21,6 +21,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     // borderBottomStartRadius:12
+  },
+  editAccount:{
+    alignSelf:'center',position:'absolute',bottom:0,
+    width:'100%',
+    paddingHorizontal:20,
+    paddingVertical:20,
+    backgroundColor:Color.WHITE,
+    borderTopStartRadius:18,
+    borderTopEndRadius:18,
+    // marginHorizontal:20
   }
 });
 

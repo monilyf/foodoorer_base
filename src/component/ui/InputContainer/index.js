@@ -9,11 +9,12 @@ import IconError from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEye from 'react-native-vector-icons/Octicons';
 import styles from './style'
 import Color from '../../../utils/Color'
+import Label from '../Label';
 
 const InputContainer = (props) => {
   return (
     <View>
-     
+     <Label color={Color.PRIMARY} ms={22} xsmall>{props.label}</Label>
       <View style={styles.inputContainer}>
         <Icon
           name={props.iconName} //"person-outline"

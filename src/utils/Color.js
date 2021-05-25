@@ -4,6 +4,7 @@ const Color={
     WHITE:'#FFFFFF',
     BLACK:'#000000',
     // PRIMARY:'#323232',
+    HIGHLIGHT_COLOR:'#DDDDDD',
     PRIMARY_DARK:'#445c6d',
     TRANSPARENT:'transparent',
     ERROR:'#FF0000',

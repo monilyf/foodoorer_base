@@ -18,7 +18,7 @@ import {
   StatusBars
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {validation} from '../../utils/ValidationUtils';
+import {PasswordValidate, validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
 import * as Animatable from 'react-native-animatable'
@@ -37,24 +37,38 @@ export class SignUp extends Component {
       emailError: '',
       phone: '',
       phoneError: '',
+      password:'',
+      confirmPassword:'',
+      passwordError:'',
+      confirmPasswordError:'',
+      isSecurePassword:true,
+      isSecureConfirmPassword:true,
+      // showToast: false,
+      toggleIcon1:'eye',
+      toggleIcon2:'eye'
       // showToast: false,
     };
   }
 
   handleOnSubmit=()=>{
-    let emailError,nameError,phoneError;
+    let emailError,nameError,phoneError,passwordError,confirmPasswordError;
     let isValid;
     emailError = validation('email',this.state.email);
     nameError = validation('name',this.state.name);
-    phoneError = validation('phoneNo',this.state.phone)
+    phoneError = validation('phoneNo',this.state.phone);
+    passwordError = validation('password',this.state.password);
+    confirmPasswordError = PasswordValidate(this.state.password,this.state.confirmPassword)
+    
 
-    if (emailError!=null || nameError!=null || phoneError!=null ){
+    if (emailError!=null || nameError!=null || phoneError!=null || passwordError!=null || confirmPasswordError!=null ){
       console.log("validation Error in Sign Up")
       this.setState(
         {
           emailError:emailError,
           nameError:nameError,
           phoneError:phoneError,
+          passwordError:passwordError,
+          confirmPasswordError:confirmPasswordError,
           // showToast: true
         },  
     //      () => {
@@ -71,11 +85,13 @@ export class SignUp extends Component {
         emailError:'',
         nameError:'',
         phoneError:'',
+        passwordError:'',
+        confirmPasswordError:'',
       });
       isValid=true;
     }
     if(isValid){
-      let register_data = {name:this.state.name,email:this.state.email,phone:this.state.phone}
+      let register_data = {name:this.state.name,email:this.state.email,phone:this.state.phone,password:this.state.password}
       AsyncStorage.setItem('register_data',JSON.stringify(register_data))
       AsyncStorage.setItem('OnBoarding','true')
       console.log('register_data:',register_data)
@@ -83,6 +99,19 @@ export class SignUp extends Component {
     }
   }
  
+
+  handlePasswordToggle = () => {
+    this.state.isSecurePassword
+      ? this.setState({isSecurePassword: false, toggleIcon1: 'eye-closed'})
+      : this.setState({isSecurePassword: true, toggleIcon1: 'eye'});
+  };
+  handleConfirmPasswordToggle = () => {
+    this.state.isSecureConfirmPassword
+      ? this.setState({isSecureConfirmPassword: false, toggleIcon2: 'eye-closed'})
+      : this.setState({isSecureConfirmPassword: true, toggleIcon2: 'eye'});
+  };
+
+
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
@@ -94,7 +123,7 @@ export class SignUp extends Component {
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
-            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
 <KeyboardAwareScrollView
           style={{flex:1}}
           // contentContainerStyle={{height:150}}
@@ -109,7 +138,7 @@ export class SignUp extends Component {
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
             enabled={Platform.OS === 'ios' ? true : false}> */}
-            <View style={{marginTop: 50,alignItems:'center'}}>
+            <View style={{marginTop:20,alignItems:'center'}}>
             
             <Animatable.View animation="fadeInLeft" iterationDelay={400}>
 
@@ -191,6 +220,30 @@ export class SignUp extends Component {
                 </View>
                 {/* </KeyboardAwareScrollView> */}
 
+                <InputContainer
+                  iconName="lock"
+                  placeholder="Enter password"
+                  iconColor={Color.PRIMARY}
+                  onChangeText={text => this.setState({password: text})}
+                  extraIconName={this.state.toggleIcon1}
+                  secureText={this.state.isSecurePassword}
+                  onToggle={()=>this.handlePasswordToggle()}
+                />
+
+              {this.state.passwordError!=null?<Label small mt={5} mb={5} ms={21} color={Color.ERROR}>{this.state.passwordError}</Label>:<Label></Label>}
+
+
+                <InputContainer
+                    iconName='lock'
+                    placeholder='Re-type password'
+                    iconColor={Color.PRIMARY}
+                    onChangeText={text => this.setState({confirmPassword:text})}
+                    extraIconName={this.state.toggleIcon2}
+                    secureText={this.state.isSecureConfirmPassword}
+                    onToggle={()=>this.handleConfirmPasswordToggle()}
+                />
+            {this.state.confirmPasswordError!=null?<Label small mt={5} mb={5} ms={21} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:<Label></Label>}
+
                 <SubmitButton
                   onPress={() => {
                     this.handleOnSubmit();
@@ -210,8 +263,9 @@ export class SignUp extends Component {
             </View> */}
             {/* <BottomSheet/> */}
           {/* </KeyboardAvoidingView> */}
-          {/* </TouchableWithoutFeedback> */}
           </KeyboardAwareScrollView>
+          </TouchableWithoutFeedback>
+
         </LinearGradient>
       </SafeAreaView>
     );
@@ -219,4 +273,3 @@ export class SignUp extends Component {
 }
 
 export default SignUp;
-// npm i react-native-keyboard-aware-view --save

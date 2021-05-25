@@ -10,7 +10,8 @@ const Routes ={
     Onboarding:'Onboarding',
     ForgotPassword:'ForgotPassword',
     OtpScreen:'OtpScreen',
-    ResetPassword:'ResetPassword'
+    ResetPassword:'ResetPassword',
+    Profile:'Profile'
 }
 
 export default Routes;
