@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
         paddingVertical: 14
       }, 
       btnImage: {
-        width:ThemeUtils.relativeWidth(5),
+        width:ThemeUtils.relativeWidth(6),
         height:ThemeUtils.relativeHeight(3),
         marginLeft: 20,
       },

@@ -47,6 +47,8 @@ export class Auth extends Component {
         this.props.navigation.navigate(Routes.SignIn);
       }
     } catch (error) {
+      alert("You don't have account");
+      
       // alert("You don't have account!");
       this.props.navigation.navigate(Routes.SignIn);
 

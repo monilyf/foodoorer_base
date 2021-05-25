@@ -5,7 +5,7 @@ import ThemeUtils from './ThemeUtils'
 
 const styles = StyleSheet.create({
   container:{
-    flex: 1,  
+    // flex: 1,  
     justifyContent: 'center',  
     alignItems: 'center',
   },
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     paddingVertical:20,
     backgroundColor:Color.WHITE,
     borderRadius:12,
-    marginHorizontal:20
+    // marginHorizontal:20
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                },
    linearGradient: {
         width: '100%',
@@ -50,6 +50,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   //   inputIcon: { marginTop: 15,marginLeft:20, position: 'absolute',fontSize:20,color:colors.primary, },
+  endLine: { 
+    borderWidth:1,
+    // backgroundColor: Color.ERROR,
+    color:Color.DARK_GRAY,
+   marginVertical:5
+
+    
+ },
+
 });
 
 export default styles;

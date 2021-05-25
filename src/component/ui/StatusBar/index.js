@@ -1,10 +1,15 @@
 import React from 'react';
 import {View,StyleSheet,StatusBar} from 'react-native'
+import Color from '../../../utils/Color';
 
-const StatusBar = (props) => {
+const StatusBars = (props) => {
     return (
         <StatusBar hidden={props.hidden} 
-            // backgroundColor
+            // backgroundColor={Color.WHITE}
+            // StatusBarStyle={props.statusBarStyle}
+            barStyle = {props.barStyle}
+            backgroundColor={props.backgroundColor}
         />
         )
 }
+export default StatusBars

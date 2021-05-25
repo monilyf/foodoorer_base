@@ -5,12 +5,11 @@ import React, { Component } from 'react';
 import {
   View, 
   Image,
-  StatusBar,
 } from 'react-native';
 import Routes from '../../router/routes';
 import styles from "./style";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { Label } from '../../component';
+import { Label,StatusBars } from '../../component';
 import Color from '../../utils/Color';
 import logo from '../../assets/images/foodoorer2.png';
 import LinearGradient from 'react-native-linear-gradient'
@@ -42,28 +41,34 @@ class SplashScreen extends Component  {
   }
 
   checkAuthentication = async () => {
-    let authenticated = await AsyncStorage.getItem('login_data');
+    let authenticated = await AsyncStorage.getItem('register_data');
     console.log('checkAuth Authenticated val - ', authenticated);
     if (authenticated != null) {
       // this.setState({ isAuthenticated: true });
-      this.goTo(true);
+      // this.goTo(true);
+      setTimeout(() => {
+        this.props.navigation.dispatch(this.resetToAuth);
+    }, 3000);
     } else {
       // this.setState({ isAuthenticated: false });
-      this.goTo(false);
+      // this.goTo(false);
+      setTimeout(() => {
+        this.props.navigation.dispatch(this.resetToNotAuth);
+    }, 3000);
     }
   };
 
-  goTo = (value) => {
-    if (value) {
-        setTimeout(() => {
-            this.props.navigation.dispatch(this.resetToAuth);
-        }, 3000);
-    } else {
-        setTimeout(() => {
-            this.props.navigation.dispatch(this.resetToNotAuth);
-        }, 3000);
-    }
-}
+//   goTo = (value) => {
+//     if (value) {
+//         setTimeout(() => {
+//             this.props.navigation.dispatch(this.resetToAuth);
+//         }, 3000);
+//     } else {
+//         setTimeout(() => {
+//             this.props.navigation.dispatch(this.resetToNotAuth);
+//         }, 3000);
+//     }
+// }
 render(){
     return (
       // <SafeAreaView style={styles.container}>
@@ -73,7 +78,7 @@ render(){
       // end={{x: 1, y: 0}}
       // style={CommonStyle.linearGradient}>
         <View style={[styles.SplashScreen_RootView,CommonStyle.container]}>
-       <StatusBar hidden={true}/>
+       <StatusBars hidden={true}/>
        <Image source={logo} style={styles.logo}/>
        
   

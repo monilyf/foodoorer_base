@@ -5,6 +5,7 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+  TouchableWithoutFeedback,Keyboard
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../../utils/Color';
@@ -14,12 +15,16 @@ import {
   Label,
   Logo,
   ToastMessage,Error,
+  StatusBars
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
 import * as Animatable from 'react-native-animatable'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+// import { KeyboardAwareView } from 'react-native-keyboard-aware-view'
+import ThemeUtils  from '../../utils/ThemeUtils';
 
 export class SignUp extends Component {
   constructor(props) {
@@ -72,6 +77,7 @@ export class SignUp extends Component {
     if(isValid){
       let register_data = {name:this.state.name,email:this.state.email,phone:this.state.phone}
       AsyncStorage.setItem('register_data',JSON.stringify(register_data))
+      AsyncStorage.setItem('OnBoarding','true')
       console.log('register_data:',register_data)
       this.props.navigation.navigate(Routes.SignIn)
     }
@@ -80,18 +86,31 @@ export class SignUp extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-      <StatusBar hidden={true}/>
+      <StatusBars hidden={true}/>
+
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
-          <KeyboardAvoidingView
+            {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+<KeyboardAwareScrollView
+          style={{flex:1}}
+          // contentContainerStyle={{height:150}}
+          resetScrollToCoords={{x: 0, y: 0}}
+          scrollEnabled={true}
+          enableResetScrollToCoords={false}
+          keyboardVerticalOffset={0}
+          enableOnAndroid={true}
+          keyboardShouldPersistTaps="always">
+          {/* <KeyboardAvoidingView
+          
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
-            enabled={Platform.OS === 'ios' ? true : false}>
-            <View style={{marginTop: -50}}>
+            enabled={Platform.OS === 'ios' ? true : false}> */}
+            <View style={{marginTop: 50,alignItems:'center'}}>
+            
             <Animatable.View animation="fadeInLeft" iterationDelay={400}>
 
              <Logo/>
@@ -117,11 +136,22 @@ export class SignUp extends Component {
                   </Label>
                
               </View>
-
+              {/* <KeyboardAwareScrollView
+          // style={{height:210}}
+          // contentContainerStyle={{height:150}}
+          resetScrollToCoords={{x: 0, y: 1}}
+          scrollEnabled={true}
+          enableResetScrollToCoords={false}
+          keyboardVerticalOffset={0}
+          enableOnAndroid={true}
+          keyboardShouldPersistTaps="always"> */}
+          <View>
                 <InputContainer
                   iconName="person"
                   placeholder="Enter name"
                   iconColor={Color.PRIMARY}
+                  // borderColor={this.state.nameError!=null ? Color.Error : Color.WHITE}
+                  // style={{borderColor: this.state.nameError!=null ? Color.Error : Color.WHITE}}
                   onChangeText={text => this.setState({name: text})}
                 />
                 {this.state.nameError != null ? (
@@ -157,6 +187,9 @@ export class SignUp extends Component {
                     {this.state.phoneError}
                   </Label>
                 ) : <Label></Label>}
+                
+                </View>
+                {/* </KeyboardAwareScrollView> */}
 
                 <SubmitButton
                   onPress={() => {
@@ -164,7 +197,7 @@ export class SignUp extends Component {
                   }}
                   buttonText="Sign Up"
                 />
-            
+               
               </View>
               </Animatable.View>
             </View>
@@ -176,7 +209,9 @@ export class SignUp extends Component {
               )}
             </View> */}
             {/* <BottomSheet/> */}
-          </KeyboardAvoidingView>
+          {/* </KeyboardAvoidingView> */}
+          {/* </TouchableWithoutFeedback> */}
+          </KeyboardAwareScrollView>
         </LinearGradient>
       </SafeAreaView>
     );
@@ -184,3 +219,4 @@ export class SignUp extends Component {
 }
 
 export default SignUp;
+// npm i react-native-keyboard-aware-view --save

@@ -121,10 +121,13 @@ export function validation(fieldName, value) {
 
 let PasswordConstraints = {
   confirmPassword: {
+   
     equality: {
       attribute: 'password',
       message: Message.Errors.pwdMisMatch,
     },
+    
+
   },
 };
 

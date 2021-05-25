@@ -4,37 +4,34 @@ import {
   View,
   Image,
   TouchableOpacity,
-  StatusBar
+  
 } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import EntypoIcon from 'react-native-vector-icons/Entypo'
+// import EntypoIcon from 'react-native-vector-icons/Entypo'
 import Routes from '../../router/routes';
-import Color from '../../utils/Color';
-import {Label} from '../../component'
+import {Label,StatusBars} from '../../component'
 import ThemeUtils from '../../utils/ThemeUtils';
-
-
-
+import Color from '../../utils/Color';
 
 const Onboarding = ({navigation}) => {
     const slides = [
         {
           key: 's1',
-          text: "Order to Keep Stomach Happy & Healthy",
-          title: "Select a Restaurant\nOrder Your Food",
+          title: "Find Foods You Want",
+          text: "Discover the best foods from nearest restaurants.",
           image: require('../../assets/images/Orderfood.png'),
         },
         {
           key: 's2',
-          title: 'Add Address and\nChoose Payment Method',
-          text: 'Secure Payment & Food at your door step',
+          title: 'Live Tracking',
+          text: 'Real time tracking of your food order on the app.',
           image : require('../../assets/images/img2.png'),
         },
         {
           key: 's3',
-          title: 'Food Delivered\nTo your home',
-          text: 'Get food delivery in the fastest time ',
+          title: 'Fast Delivery',
+          text: 'Fast delivery to your home, office and wherever you are. ',
           image : require('../../assets/images/FoodDelivery.png')
         },
        
@@ -49,7 +46,7 @@ const Onboarding = ({navigation}) => {
      
       <View style={styles.buttonCircle}>
 
-      <Icon name="arrow-right" style={{ fontSize: 25, color: Color.WHITE }} />
+      <Icon name="arrow-right" style={{ fontSize: 25, color:Color.WHITE }} />
 
     </View>
     );
@@ -57,36 +54,35 @@ const Onboarding = ({navigation}) => {
 
   const RenderDoneButton = () => {
     return (
-  
       <TouchableOpacity onPress={() => navigation.navigate(Routes.SignIn)}>
         <View style={styles.buttonCircle}>
           <Icon name="thumbs-up" style={{ fontSize: 25, fontWeight: 'bold', color: Color.WHITE }} />
-
         </View>
       </TouchableOpacity>
     );
   };
-
   const RenderItem = ({item}) => {
     return (
       <View
         style={styles.container}>
-     <Label large bolder color={Color.DARK_MODERATE_BLUE} align='center'>{item.title}</Label>
-
+     {/* <Label large bolder color={Color.DARK_MODERATE_BLUE} align='center'>{item.title}</Label> */}
         <Image
           style={styles.introImageStyle}
-          source={item.image} resizeMode='contain' />
-      
-      <Label align='center' normal color={Color.DARK_MODERATE_BLUE}>{item.text}</Label>
-
+          source={item.image} 
+            resizeMode='contain'
+          />
+     <Label xlarge bolder color={Color.DARK_MODERATE_BLUE} align='center' letterSpacing={1}  >{item.title}</Label>
+         
+      <View style={{marginHorizontal:20}}>
+      <Label align='center' large color={Color.DARK_MODERATE_BLUE} mb={10}  >{item.text}</Label>
+      </View>
       </View>
     );
   };
 
-  return (
-   
+  return (  
        <View style={{flex:1}}>
-       <StatusBar hidden={true}/>
+       <StatusBars hidden={true}/>
         <AppIntroSlider
           data={slides}
           renderItem={RenderItem}
@@ -97,12 +93,10 @@ const Onboarding = ({navigation}) => {
         activeDotStyle={styles.activeDotStyle}
         />
         </View>
-   
   );
 };
 
 export default Onboarding;
-
 const styles = StyleSheet.create({
   container: 
     {
@@ -110,8 +104,7 @@ const styles = StyleSheet.create({
       backgroundColor:Color.WHITE,
       alignItems: 'center',
       justifyContent: 'space-around',
-      paddingBottom: 100,
-    
+      paddingBottom: 100, 
   }, 
   buttonCircle: {
     marginTop: 4,
@@ -122,17 +115,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
- 
   introImageStyle: {
-    // width: '100%',
-    // height: 200,
-    width:ThemeUtils.relativeWidth(90),
-    height:ThemeUtils.relativeHeight(30)
+    width:ThemeUtils.relativeWidth(75),
+    height:ThemeUtils.relativeHeight(30),
+    marginTop:40
   },
   dotStyle: {
+    // marginBottom:'0%',
     backgroundColor: Color.DARK_GRAY,
   },
   activeDotStyle: {
+    // marginBottom:'0%',
     backgroundColor: Color.APPLE,
   },
  

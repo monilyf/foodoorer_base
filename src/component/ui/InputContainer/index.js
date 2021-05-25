@@ -8,10 +8,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconError from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconEye from 'react-native-vector-icons/Octicons';
 import styles from './style'
+import Color from '../../../utils/Color'
 
 const InputContainer = (props) => {
   return (
     <View>
+     
       <View style={styles.inputContainer}>
         <Icon
           name={props.iconName} //"person-outline"
@@ -22,6 +24,10 @@ const InputContainer = (props) => {
         <TextInput
           placeholder={props.placeholder}
           style={styles.input}
+          // style={[
+          // styles.input,
+          //  props.style ,
+        // ]}
           
           value={props.value}
           onEndEditing={props.onEndEditing}

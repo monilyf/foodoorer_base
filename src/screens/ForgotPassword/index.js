@@ -3,12 +3,14 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   View,
-  StatusBar,
+  TouchableWithoutFeedback,
+  Keyboard
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../../utils/Color';
-import {InputContainer, RoundButton, Label, Logo} from '../../component';
+import {InputContainer, RoundButton, Label,SubmitButton, Logo,StatusBars} from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
@@ -61,12 +63,13 @@ export class ForgotPassword extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-        <StatusBar hidden={true} />
+        <StatusBars hidden={true} />
         <LinearGradient
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
@@ -93,6 +96,7 @@ export class ForgotPassword extends Component {
                     placeholder="Enter email"
                     iconColor={Color.PRIMARY}
                     onChangeText={text => this.setState({email: text})}
+                    keyboardType='email-address'
                   />
                   {this.state.emailError != null ? (
                     <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
@@ -100,14 +104,20 @@ export class ForgotPassword extends Component {
                     </Label>
                   ) : null}
 
-                  <RoundButton
+                  {/* <RoundButton
                     onPress={() => {
                       this.handleOnSubmit();
                     }}
                     mt={10}
                     backgroundColor={Color.DARK_CYAN}>
                     Continue
-                  </RoundButton>
+                  </RoundButton> */}
+                  <SubmitButton
+                  onPress={() => {
+                    this.handleOnSubmit();
+                  }}
+                  buttonText="Continue"
+                />
                 </View>
               </Animatable.View>
             </View>
@@ -119,6 +129,7 @@ export class ForgotPassword extends Component {
               )}
             </View> */}
           </KeyboardAvoidingView>
+          </TouchableWithoutFeedback>
         </LinearGradient>
       </SafeAreaView>
     );

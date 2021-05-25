@@ -4,7 +4,8 @@ import {
   SafeAreaView,
   View,
   TouchableOpacity,
-  StatusBar,
+  ScrollView,
+  Keyboard,TouchableWithoutFeedback
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../../utils/Color';
@@ -16,8 +17,11 @@ import {
   SocialButton,
   ToastMessage,
   Logo,
+  StatusBars,
+
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
@@ -79,13 +83,14 @@ export class SignIn extends Component {
 
   render(props) {
     return (
-      <SafeAreaView style={CommonStyle.container}>
-        <StatusBar hidden={true} />
+      <SafeAreaView style={CommonStyle.container} >
+        <StatusBars hidden={true} />
         <LinearGradient
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
@@ -186,7 +191,7 @@ export class SignIn extends Component {
                     />
 
                     <SocialButton
-                      buttonText="Google    "
+                      buttonText="Google   "
                       image={require('../../assets/images/google.png')}
                     />
                   </View>
@@ -199,6 +204,7 @@ export class SignIn extends Component {
               ) : null}
             </View> */}
           </KeyboardAvoidingView>
+          </TouchableWithoutFeedback>
         </LinearGradient>
       </SafeAreaView>
     );

@@ -3,7 +3,7 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   View,
-  StatusBar,
+  TouchableWithoutFeedback,Keyboard
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../../utils/Color';
@@ -11,7 +11,8 @@ import {
   InputContainer,
   Label,
   Logo,
-  RoundButton,
+  StatusBars,
+  SubmitButton,
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation,PasswordValidate} from '../../utils/ValidationUtils';
@@ -79,12 +80,14 @@ export class ResetPassword extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-      <StatusBar hidden={true}/>
+      <StatusBars hidden={true}/>
         <LinearGradient
           colors={[Color.GRADIENT3, Color.GRADIENT4]}
           start={{x: 0, y: 1}}
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+
           <KeyboardAvoidingView
             behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
@@ -129,14 +132,20 @@ export class ResetPassword extends Component {
                 />
             {this.state.confirmPasswordError!=null?<Label small mt={5} mb={5} ms={21} color={Color.ERROR}>{this.state.confirmPasswordError}</Label>:<Label></Label>}
 
-                <RoundButton
+                {/* <RoundButton
                   onPress={() => {
                     this.handleOnSubmit();
                   }}
                   mt={10}
                   backgroundColor={Color.DARK_CYAN}>
                   Reset Password
-                </RoundButton>
+                </RoundButton> */}
+                <SubmitButton
+                  onPress={() => {
+                    this.handleOnSubmit();
+                  }}
+                  buttonText="Reset Password"
+                />
               </View>
               </Animatable.View>
             </View>
@@ -146,6 +155,8 @@ export class ResetPassword extends Component {
               ) : null}
             </View> */}
           </KeyboardAvoidingView>
+          </TouchableWithoutFeedback>
+
         </LinearGradient>
       </SafeAreaView>
     );

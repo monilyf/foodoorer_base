@@ -5,14 +5,14 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  StatusBar
+  
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import otpStyle from './style'
 import Color from '../../utils/Color';
 import {
   Label,
-  RoundButton,
+  RoundButton,StatusBars
 } from '../../component';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {validation} from '../../utils/ValidationUtils';
@@ -68,7 +68,7 @@ export class OtpScreen extends Component {
   render(props) {
     return (
       <SafeAreaView style={CommonStyle.container}>
-      <StatusBar hidden={true}/>
+      <StatusBars hidden={true}/>
         <LinearGradient
           // colors={[Color.PALE_VIOLET, Color.LIGHT_ORANGE]}
           colors={[Color.GRADIENT3,Color.GRADIENT4 ]}

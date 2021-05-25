@@ -10,7 +10,8 @@ import Header from './ui/Header';
 import ModelView from './ui/ModelView';
 import ToastMessage from './ui/ToastMessage';
 import Logo from './ui/Logo';
-import Error from './ui/Error'
+import Error from './ui/Error';
+import StatusBars from './ui/StatusBar'
 
 export {
     InputContainer,
@@ -26,4 +27,5 @@ export {
     ToastMessage,
     Logo,
     Error,
+    StatusBars,
 }

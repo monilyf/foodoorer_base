@@ -7,12 +7,14 @@ const Errors = {
     pwdBlank: "Please enter Password",
     pwdInvalid: "Please enter strong password. Ex: Abc@123",
     pwdLengthMinimum: "Password must be atleast 6 characters",
+    pwdBlank: "Please enter Password",
+
     pwdMisMatch: "Password not match",
 
-    phoneBlank: 'Mobile number is required',
+    phoneBlank: 'Please enter Mobile number',
     phoneInvalid: 'Mobile number is invalid',
-    phonePattern: 'Mobile Number must be start with 6 or 7 or 8 or 9 ',
-    phoneTooLong: 'Mobile number  exceed limit',
+    // phonePattern: 'Mobile Number must be start with 6 or 7 or 8 or 9 ',
+    phoneTooLong: 'Mobile number exceed limit',
     phoneTooShort: 'Mobile number is too short',
 
     serverError: "Something went wrong.Please try again.",

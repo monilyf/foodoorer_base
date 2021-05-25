@@ -5,6 +5,7 @@ import Icon1 from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Home from '../Home'
 import Color from '../../utils/Color'
+import Profile from '../../screens/Profile'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -12,6 +13,12 @@ const HomeNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      creenOptions={{
+    tabBarOptions: {
+        style: {
+            backgroundColor: Color.APPLE,
+        },
+    },}}
       activeColor={Color.DARK_BLUE}
       inactiveColor={Color.DARK_GRAYISH_BLUE}>
       {/* <Tab.Screen name="HomeScreen" component={HomeScreen} /> */}
@@ -44,7 +51,7 @@ const HomeNavigator = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={Home}
+        component={Profile}
         options={{
           tabBarLabel: 'Profile',
           tabBarColor: Color.ALICE_BLUE,
