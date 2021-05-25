@@ -12,6 +12,7 @@ import ToastMessage from './ui/ToastMessage';
 import Logo from './ui/Logo';
 import Error from './ui/Error';
 import StatusBars from './ui/StatusBar'
+import ProfileNavItem from './ui/ProfileNavItem'
 
 export {
     InputContainer,
@@ -28,4 +29,5 @@ export {
     Logo,
     Error,
     StatusBars,
+    ProfileNavItem
 }

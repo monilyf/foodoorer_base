@@ -3,6 +3,7 @@ import {View,StyleSheet,Image} from 'react-native';
 import Color from '../../../utils/Color';
 import Spinner from 'react-native-loading-spinner-overlay';
 
+
 function Loader(props){
     return (
         <Spinner visible={props.visible}>

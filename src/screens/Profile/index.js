@@ -41,19 +41,87 @@ const Profile = () => {
             activeOpacity={0.6}
             underlayColor="#DDDDDD"
             onPress={() => alert('Pressed!')} 
-            style={{marginHorizontal:23,padding:12}}>
+            style={{marginHorizontal:30,padding:12}}>
             <View
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <Icon name="home" color={Color.PRIMARY} size={30} />
-              <Label color={Color.PRIMARY} ms={25}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
                 My Orders
               </Label>
             </View>
           </TouchableHighlight>
          <View style={CommonStyle.endLine}></View>
+         <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert('Pressed!')} 
+            style={{marginHorizontal:30,padding:12}}>
+           <View style={styles.subContainerData}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
+                Manage Addresses
+              </Label>
+            </View>
+          </TouchableHighlight>
+         <View style={CommonStyle.endLine}></View>
+         <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert('Pressed!')} 
+            style={{marginHorizontal:30,padding:12}}>
+            <View style={styles.subContainerData}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
+                Payments
+              </Label>
+            </View>
+          </TouchableHighlight>
+         <View style={CommonStyle.endLine}></View>
+         <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert('Pressed!')} 
+            style={{marginHorizontal:30,padding:12}}>
+            <View style={styles.subContainerData}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
+                Favourites
+              </Label>
+            </View>
+          </TouchableHighlight>
+         <View style={CommonStyle.endLine}></View>
+         <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert('Pressed!')} 
+            style={{marginHorizontal:30,padding:12}}>
+            <View style={styles.subContainerData}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
+                Help
+              </Label>
+            </View>
+          </TouchableHighlight>
+         <View style={CommonStyle.endLine}></View>
+         <TouchableHighlight
+            activeOpacity={0.6}
+            underlayColor="#DDDDDD"
+            onPress={() => alert('Pressed!')} 
+            style={{marginHorizontal:30,padding:12}}>
+            <View style={styles.subContainerData}>
+              <Icon name="home" color={Color.DARK_GRAY} size={30} />
+              <Label small color={Color.PRIMARY} ms={25}>
+                Logout
+              </Label>
+            </View>
+          </TouchableHighlight>
+         {/* <View style={CommonStyle.endLine}></View> */}
+         {/* <ProfileNavItem name='My Order'/> */}
+         
+         
         </View>
       </View>
     </SafeAreaView>

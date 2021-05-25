@@ -3,7 +3,11 @@ import Color from '../../utils/Color'
 
 const styles = StyleSheet.create({
   container:{
-    backgroundColor:Color.WHITE
+    backgroundColor:Color.WHITE,
+    paddingBottom:8,
+    borderBottomStartRadius:15,
+    borderBottomEndRadius:15
+
   },
   profileHeader: {
     padding: 17,
@@ -12,6 +16,11 @@ const styles = StyleSheet.create({
   },
   subContainer:{
       flexDirection:'column'
+  },
+  subContainerData:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    // borderBottomStartRadius:12
   }
 });
 

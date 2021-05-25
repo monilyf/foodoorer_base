@@ -51,10 +51,11 @@ const styles = StyleSheet.create({
   },
   //   inputIcon: { marginTop: 15,marginLeft:20, position: 'absolute',fontSize:20,color:colors.primary, },
   endLine: { 
-    borderWidth:1,
-    // backgroundColor: Color.ERROR,
-    color:Color.DARK_GRAY,
-   marginVertical:5
+    borderWidth:0.5,
+    borderColor:Color.DARK_GRAY,
+    marginVertical:3,
+    opacity:0.5,
+    marginHorizontal:30
 
     
  },
