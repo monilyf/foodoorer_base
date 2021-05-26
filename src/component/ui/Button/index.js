@@ -10,7 +10,7 @@ import Color from "../../../utils/Color";
 import Theme from "../../../utils/ThemeUtils"
 import PropTypes from 'prop-types';
 
-const RoundButton = (props) => {
+export const Button = (props) => {
 
     onClick = () => {
         if (props.onPress){
@@ -58,6 +58,7 @@ const RoundButton = (props) => {
             borderRadius: props.border_radius,
             borderWidth: 1,
             borderBottomWidth: 0,
+           
         });
         btnTextStylesArray.push({color: props.textColor});
 
@@ -77,7 +78,7 @@ const RoundButton = (props) => {
 
 
 
-RoundButton.defaultProps = {
+Button.defaultProps = {
     ...TouchableHighlight.defaultProps,
     textColor: Color.WHITE,
     backgroundColor: Color.PRIMARY,
@@ -86,13 +87,13 @@ RoundButton.defaultProps = {
     btn_lg: false,
     btn_xl: false,
     btn_block: false,
-    border_radius: 30,
+    border_radius: 0,
     mt: 0,
     mb: 0,
     ms: 0,
     me: 0,
 };
-RoundButton.propTypes = {
+Button.propTypes = {
     ...TouchableHighlight.propTypes,
     textColor: PropTypes.string,
     backgroundColor: PropTypes.string,
@@ -108,4 +109,4 @@ RoundButton.propTypes = {
     ms: PropTypes.number,
     me: PropTypes.number,
 };
-export default RoundButton;
+// export default Button;

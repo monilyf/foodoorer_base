@@ -5,6 +5,7 @@ import {SubmitButton,Label,RoundButton,FloatingActionButton,Header, ToastMessage
 import Routes from '../../router/routes'
 import {CommonActions} from '@react-navigation/routers'
 import Color from '../../utils/Color'
+import styles from './style'
 
 export class Home extends Component {
 
@@ -34,7 +35,7 @@ export class Home extends Component {
         backgroundColor={Color.WHITE}
       />
       <View style={styles.container}>
-      
+
       </View>
       </SafeAreaView>
     )

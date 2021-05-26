@@ -30,7 +30,8 @@ const Color={
     GRADIENT1:'#29B76D',
     GRADIENT2:'#2A97A6',
     GRADIENT3:'#6DC999',
-    GRADIENT4:'#73BFC9'
+    GRADIENT4:'#73BFC9',
+    BOX_BG:'#f8fcfc'
    
 }
 

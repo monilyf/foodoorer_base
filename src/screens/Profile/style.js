@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     width:'100%',
     paddingHorizontal:20,
     paddingVertical:20,
-    backgroundColor:Color.WHITE,
+    backgroundColor:Color.BOX_BG,
     borderTopStartRadius:18,
     borderTopEndRadius:18,
     // marginHorizontal:20

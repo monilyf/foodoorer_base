@@ -14,8 +14,8 @@ import Label from '../Label';
 const InputContainer = (props) => {
   return (
     <View>
-     <Label color={Color.PRIMARY} ms={22} xsmall>{props.label}</Label>
-      <View style={styles.inputContainer}>
+     {/* <Label color={Color.PRIMARY} ms={22} xsmall>{props.label}</Label> */}
+      <View style={[styles.inputContainer,props.style]}>
         <Icon
           name={props.iconName} //"person-outline"
           color={props.iconColor}
