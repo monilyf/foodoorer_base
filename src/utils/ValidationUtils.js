@@ -45,7 +45,7 @@ let constraints = {
     numericality: {
       notValid: Message.Errors.phoneInvalid,
     },
-    
+
     length: {
       maximum: 10,
       minimum: 10,
@@ -53,53 +53,16 @@ let constraints = {
       tooShort: Message.Errors.phoneTooShort,
     },
   },
-  otp: {
-    presence: {
-      message: Message.Errors.otpBlank,
-    },
-    format: {
-      pattern: /^\d{4}/,
-      message: Message.Errors.otpInvalid,
-    },
-  },
-  age: {
-    presence: {
-      message: Message.Errors.ageBlank,
-    },
-    numericality: {
-      onlyInteger: true,
-      strict: true,
-      lessThanOrEqualTo: 100,
-      greaterThanOrEqualTo: 5,
-      notGreaterThanOrEqualTo: Message.Errors.ageLess,
-      notLessThanOrEqualTo: Message.Errors.ageGrater,
-      notValid: Message.Errors.ageInvalid,
-      notInteger: Message.Errors.ageInvalid,
-    },
-  },
+
   couponCode: {
     presence: {
       message: Message.Errors.couponCodeBlank,
     },
   },
-  comment: {
-    presence: {
-      message: Message.Errors.commentBlank,
-    },
-  },
-  flagComment: {
-    presence: {
-      message: Message.Errors.flagCommentBlank,
-    },
-  },
+
   countryCode: {
     presence: {
       message: Message.Errors.countryCodeBlank,
-    },
-  },
-  playListName: {
-    presence: {
-      message: Message.Errors.playListNameBlank,
     },
   },
 };
@@ -121,13 +84,10 @@ export function validation(fieldName, value) {
 
 let PasswordConstraints = {
   confirmPassword: {
-   
     equality: {
       attribute: 'password',
       message: Message.Errors.pwdMisMatch,
     },
-    
-
   },
 };
 

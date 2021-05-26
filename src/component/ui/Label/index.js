@@ -28,14 +28,6 @@ const Label = (props) => {
         else
             stylesArray.push({ fontSize: Theme.fontNormal });
 
-        // if (props.border){
-        //     stylesArray.push({borderBottomWidth:2})
-        // }
-        // else{
-        //     stylesArray.push({borderBottomWidth:0})
-
-        // }
-
         if (props.bold)
             stylesArray.push({ fontWeight: "500" });
         else if (props.bolder)

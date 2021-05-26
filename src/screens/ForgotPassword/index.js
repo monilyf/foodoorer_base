@@ -4,13 +4,17 @@ import {
   SafeAreaView,
   View,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Color from '../../utils/Color';
-import {InputContainer, RoundButton, Label,SubmitButton, Logo,StatusBars} from '../../component';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {
+  InputContainer,
+  Label,
+  SubmitButton,
+  Logo,
+  StatusBars,
+} from '../../component';
 import {validation} from '../../utils/ValidationUtils';
 import Routes from '../../router/routes';
 import CommonStyle from '../../utils/CommonStyle';
@@ -23,8 +27,6 @@ export class ForgotPassword extends Component {
     this.state = {
       email: '',
       emailError: '',
-
-      showToast: false,
     };
   }
 
@@ -35,17 +37,10 @@ export class ForgotPassword extends Component {
 
     if (emailError != null) {
       console.log('error');
-      this.setState(
-        {
-          emailError: emailError,
-          showToast: true,
-        },
-        // () => {
-        //   setTimeout(() => {
-        //     this.setState({showToast: false});
-        //   }, 2500);
-        // },
-      );
+      this.setState({
+        emailError: emailError,
+        showToast: true,
+      });
       isValid = false;
     } else {
       console.log('done');
@@ -55,7 +50,6 @@ export class ForgotPassword extends Component {
       isValid = true;
     }
     if (isValid) {
-      // this.props.navigation.navigate(Routes.OtpScreen)
       this.props.navigation.navigate(Routes.ResetPassword);
     }
   };
@@ -70,65 +64,48 @@ export class ForgotPassword extends Component {
           end={{x: 1, y: 0}}
           style={CommonStyle.linearGradient}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <KeyboardAvoidingView
-            behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-            keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
-            enabled={Platform.OS === 'ios' ? true : false}>
-            <View>
-              <Animatable.View animation="fadeInLeft" iterationDelay={400}>
-                <Logo />
+            <KeyboardAvoidingView
+              behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+              keyboardVerticalOffset={Platform.OS == 'ios' ? 0 : 40}
+              enabled={Platform.OS === 'ios' ? true : false}>
+              <View>
+                <Animatable.View animation="fadeInLeft" iterationDelay={400}>
+                  <Logo />
                 </Animatable.View>
                 <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
-
-                <View style={CommonStyle.boxContainer}>
-                  {/* <Image source={logo} style={{alignSelf:'center',marginBottom:15,height:ThemeUtils.relativeHeight(12),width:ThemeUtils.relativeWidth(50)}}/> */}
-                  <Label color={Color.PRIMARY} align="center" xlarge>
-                    Forgot your password?
-                  </Label>
-
-                  <Label color={Color.DARK_GRAY} mt={10} mb={15} small>
-                    Enter your email for the verfication process. we will send 4
-                    digits code to your email.
-                  </Label>
-
-                  <InputContainer
-                    iconName="email"
-                    placeholder="Enter email"
-                    iconColor={Color.PRIMARY}
-                    onChangeText={text => this.setState({email: text})}
-                    keyboardType='email-address'
-                  />
-                  {this.state.emailError != null ? (
-                    <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
-                      {this.state.emailError}
+                  <View style={CommonStyle.boxContainer}>
+                    <Label color={Color.PRIMARY} align="center" xlarge>
+                      Forgot your password?
                     </Label>
-                  ) : null}
 
-                  {/* <RoundButton
-                    onPress={() => {
-                      this.handleOnSubmit();
-                    }}
-                    mt={10}
-                    backgroundColor={Color.DARK_CYAN}>
-                    Continue
-                  </RoundButton> */}
-                  <SubmitButton
-                  onPress={() => {
-                    this.handleOnSubmit();
-                  }}
-                  buttonText="Continue"
-                />
-                </View>
-              </Animatable.View>
-            </View>
-            {/* <View style={{marginVertical: 30}}>
-              {this.state.showToast ? (
-                <ToastMessage text={this.state.emailError} />
-              ) : (
-                null
-              )}
-            </View> */}
-          </KeyboardAvoidingView>
+                    <Label color={Color.DARK_GRAY} mt={10} mb={15} small>
+                      Enter your email for the verfication process. we will send
+                      4 digits code to your email.
+                    </Label>
+
+                    <InputContainer
+                      iconName="email"
+                      placeholder="Enter email"
+                      iconColor={Color.PRIMARY}
+                      onChangeText={text => this.setState({email: text})}
+                      keyboardType="email-address"
+                    />
+                    {this.state.emailError != null ? (
+                      <Label small mt={5} mb={5} ms={21} color={Color.ERROR}>
+                        {this.state.emailError}
+                      </Label>
+                    ) : null}
+
+                    <SubmitButton
+                      onPress={() => {
+                        this.handleOnSubmit();
+                      }}
+                      buttonText="Continue"
+                    />
+                  </View>
+                </Animatable.View>
+              </View>
+            </KeyboardAvoidingView>
           </TouchableWithoutFeedback>
         </LinearGradient>
       </SafeAreaView>

@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Color, ThemeUtils} from '../../../utils';
+import { View, StyleSheet } from 'react-native';
+import { Color, ThemeUtils } from '../../../utils';
 import RoundButton from '../../../component/ui/RoundButton';
 import DeviceInfo from 'react-native-device-info';
 const isTablet = DeviceInfo.isTablet();
@@ -21,7 +21,7 @@ export default class PopUpView extends React.Component {
           <View>
             {this.props.children}
             <View style={Style.bottomButtonView}>
-              <View style={{width: ThemeUtils.relativeWidth(32)}}>
+              <View style={{ width: ThemeUtils.relativeWidth(32) }}>
                 <RoundButton
                   click={() => {
                     this.props.onClickButton1()
@@ -30,7 +30,7 @@ export default class PopUpView extends React.Component {
                   text={this.props.button1Text}
                 />
               </View>
-              <View style={{width: ThemeUtils.relativeWidth(32)}}>
+              <View style={{ width: ThemeUtils.relativeWidth(32) }}>
                 <RoundButton
                   backgroundColor={Color.WHITE}
                   borderColor={Color.PRIMARY}

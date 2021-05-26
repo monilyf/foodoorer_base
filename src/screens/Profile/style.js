@@ -1,37 +1,36 @@
 import {StyleSheet} from 'react-native';
-import Color from '../../utils/Color'
+import Color from '../../utils/Color';
 
 const styles = StyleSheet.create({
-  container:{
-    backgroundColor:Color.WHITE,
-    paddingBottom:8,
-    borderBottomStartRadius:18,
-    borderBottomEndRadius:18
-
+  container: {
+    backgroundColor: Color.WHITE,
+    paddingBottom: 8,
+    borderBottomStartRadius: 18,
+    borderBottomEndRadius: 18,
   },
   profileHeader: {
     padding: 17,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  subContainer:{
-      flexDirection:'column'
+  subContainer: {
+    flexDirection: 'column',
   },
-  subContainerData:{
+  subContainerData: {
     flexDirection: 'row',
     alignItems: 'center',
-    // borderBottomStartRadius:12
   },
-  editAccount:{
-    alignSelf:'center',position:'absolute',bottom:0,
-    width:'100%',
-    paddingHorizontal:20,
-    paddingVertical:20,
-    backgroundColor:Color.BOX_BG,
-    borderTopStartRadius:18,
-    borderTopEndRadius:18,
-    // marginHorizontal:20
-  }
+  editAccount: {
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
+    backgroundColor: Color.BOX_BG,
+    borderTopStartRadius: 18,
+    borderTopEndRadius: 18,
+  },
 });
 
-export default styles
+export default styles;

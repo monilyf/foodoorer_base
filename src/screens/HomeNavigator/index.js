@@ -1,11 +1,10 @@
 import React from 'react';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-// import MaterialCommunityIcons from 'react-native-vector-icons/materialcommunityicons'
 import Icon1 from 'react-native-vector-icons/Entypo';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Home from '../Home'
-import Color from '../../utils/Color'
-import Profile from '../../screens/Profile'
+import Home from '../Home';
+import Color from '../../utils/Color';
+import Profile from '../../screens/Profile';
 import Routes from '../../router/routes';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -15,21 +14,23 @@ const HomeNavigator = () => {
     <Tab.Navigator
       initialRouteName="Home"
       creenOptions={{
-    tabBarOptions: {
-        style: {
+        tabBarOptions: {
+          style: {
             backgroundColor: Color.APPLE,
+          },
         },
-    },}}
+      }}
       activeColor={Color.DARK_BLUE}
       inactiveColor={Color.DARK_GRAYISH_BLUE}>
-      {/* <Tab.Screen name="HomeScreen" component={HomeScreen} /> */}
       <Tab.Screen
         name="Explore"
         component={Home}
         options={{
           tabBarLabel: 'Explore',
           tabBarColor: Color.ALICE_BLUE,
-          tabBarIcon: ({color}) => <Icon1 name="shop" color={color} size={26} />,
+          tabBarIcon: ({color}) => (
+            <Icon1 name="shop" color={color} size={26} />
+          ),
         }}
       />
       <Tab.Screen
@@ -38,7 +39,9 @@ const HomeNavigator = () => {
         options={{
           tabBarLabel: 'Delivery',
           tabBarColor: Color.ALICE_BLUE,
-          tabBarIcon: ({color}) => <Icon name="location-arrow" color={color} size={26} />,
+          tabBarIcon: ({color}) => (
+            <Icon name="location-arrow" color={color} size={26} />
+          ),
         }}
       />
       <Tab.Screen
@@ -47,7 +50,9 @@ const HomeNavigator = () => {
         options={{
           tabBarLabel: 'Histroy',
           tabBarColor: Color.ALICE_BLUE,
-          tabBarIcon: ({color}) => <Icon name="history" color={color} size={26} />,
+          tabBarIcon: ({color}) => (
+            <Icon name="history" color={color} size={26} />
+          ),
         }}
       />
       <Tab.Screen
@@ -56,9 +61,7 @@ const HomeNavigator = () => {
         options={{
           tabBarLabel: 'Profile',
           tabBarColor: Color.ALICE_BLUE,
-          tabBarIcon: ({color}) => (
-            <Icon name="user" color={color} size={26} />
-          ),
+          tabBarIcon: ({color}) => <Icon name="user" color={color} size={26} />,
         }}
       />
     </Tab.Navigator>
@@ -66,4 +69,3 @@ const HomeNavigator = () => {
 };
 
 export default HomeNavigator;
-
