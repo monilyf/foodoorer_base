@@ -149,7 +149,7 @@ export class SignUp extends Component {
                           large
                           ph={30}
                           bolder
-                          color={Color.DARK_MODERATE_BLUE}>
+                          color={Color.INACTIVE_COLOR}>
                           Sign In
                         </Label>
                       </TouchableOpacity>
@@ -158,9 +158,9 @@ export class SignUp extends Component {
                         ph={30}
                         border={4}
                         pb={5}
-                        borderColor={Color.APPLE}
+                        borderColor={Color.PRIMARY}
                         bolder
-                        color={Color.DARK_BLUE}>
+                        color={Color.ACTIVE_COLOR}>
                         Sign Up
                       </Label>
                     </View>
@@ -169,13 +169,7 @@ export class SignUp extends Component {
                       <InputContainer
                         iconName="person"
                         placeholder="Enter name"
-                        iconColor={Color.PRIMARY}
-                        style={{
-                          borderColor:
-                            this.state.nameError != null
-                              ? Color.Error
-                              : Color.WHITE,
-                        }}
+                        iconColor={Color.PRIMARY_DARK}
                         onChangeText={text => this.setState({name: text})}
                       />
                       {this.state.nameError != null ? (
@@ -191,7 +185,7 @@ export class SignUp extends Component {
                         iconName="email"
                         placeholder="Enter email"
                         keyboardType="email-address"
-                        iconColor={Color.PRIMARY}
+                        iconColor={Color.PRIMARY_DARK}
                         onChangeText={text => this.setState({email: text})}
                       />
                       {this.state.emailError != null ? (
@@ -205,7 +199,7 @@ export class SignUp extends Component {
                       <InputContainer
                         iconName="phone-android"
                         placeholder="Enter mobile "
-                        iconColor={Color.PRIMARY}
+                        iconColor={Color.PRIMARY_DARK}
                         keyboardType="phone-pad"
                         onChangeText={text => this.setState({phone: text})}
                       />
@@ -221,7 +215,7 @@ export class SignUp extends Component {
                     <InputContainer
                       iconName="lock"
                       placeholder="Enter password"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text => this.setState({password: text})}
                       extraIconName={this.state.toggleIcon1}
                       secureText={this.state.isSecurePassword}
@@ -239,7 +233,7 @@ export class SignUp extends Component {
                     <InputContainer
                       iconName="lock"
                       placeholder="Re-type password"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text =>
                         this.setState({confirmPassword: text})
                       }

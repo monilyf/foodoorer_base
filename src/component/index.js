@@ -12,6 +12,10 @@ import Logo from './ui/Logo';
 import Error from './ui/Error';
 import StatusBars from './ui/StatusBar';
 import ProfileNavItem from './ui/ProfileNavItem';
+import ContentHeader from './ui/ContentHeader';
+import CategoryCard from './ui/CategoryCard';
+import ItemCard from './ui/ItemCard';
+import RestaurantCard from './ui/RestaurantCard'
 
 export {
   InputContainer,
@@ -28,4 +32,9 @@ export {
   Error,
   StatusBars,
   ProfileNavItem,
+  ContentHeader,
+  CategoryCard,
+  ItemCard,
+  RestaurantCard,
+  
 };

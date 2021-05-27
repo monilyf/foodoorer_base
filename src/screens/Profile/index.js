@@ -164,7 +164,7 @@ class Profile extends Component {
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                   }}>
-                  <Label color={Color.PRIMARY} bolder mb={12} large>
+                  <Label color={Color.PRIMARY_DARK} bolder mb={12} large>
                     EDIT ACCOUNT
                   </Label>
                   <TouchableOpacity
@@ -175,18 +175,18 @@ class Profile extends Component {
                       name="close"
                       size={25}
                       style={{alignSelf: 'center'}}
-                      color={Color.PRIMARY}
+                      color={Color.PRIMARY_DARK}
                     />
                   </TouchableOpacity>
                 </View>
-                <Label color={Color.PRIMARY} ms={22} mb={5} small>
+                <Label color={Color.PRIMARY_DARK} ms={22} mb={5} small>
                   Mobile number
                 </Label>
 
                 <InputContainer
                   iconName="phone-android"
                   placeholder="9898656656"
-                  iconColor={Color.PRIMARY}
+                  iconColor={Color.PRIMARY_DARK}
                   keyboardType="phone-pad"
                   onChangeText={text => this.setState({phone: text})}
                 />
@@ -198,14 +198,14 @@ class Profile extends Component {
                   <Label></Label>
                 )}
 
-                <Label color={Color.PRIMARY} ms={22} mb={7} small>
+                <Label color={Color.PRIMARY_DARK} ms={22} mb={7} small>
                   Email
                 </Label>
                 <InputContainer
                   iconName="email"
                   placeholder="loremipsum@email.com"
                   keyboardType="email-address"
-                  iconColor={Color.PRIMARY}
+                  iconColor={Color.PRIMARY_DARK}
                   onChangeText={text => this.setState({email: text})}
                 />
                 {this.state.emailError != null ? (

@@ -23,8 +23,6 @@ const styles = StyleSheet.create({
 
     bottom: 50,
   },
-  footerText: {
-    color: Color.DARK_GRAYISH_BLUE,
-  },
+
 });
 export default styles;

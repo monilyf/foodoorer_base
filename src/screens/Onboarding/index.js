@@ -61,14 +61,14 @@ const Onboarding = ({navigation}) => {
         <Label
           xlarge
           bolder
-          color={Color.DARK_MODERATE_BLUE}
+          color={Color.ONBOARDING_TEXT}
           align="center"
           letterSpacing={1}>
           {item.title}
         </Label>
 
         <View style={{marginHorizontal: 20}}>
-          <Label align="center" large color={Color.DARK_MODERATE_BLUE} mb={10}>
+          <Label align="center" large color={Color.ONBOARDING_TEXT} mb={10}>
             {item.text}
           </Label>
         </View>

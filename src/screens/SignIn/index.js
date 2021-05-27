@@ -130,8 +130,8 @@ export class SignIn extends Component {
                         bolder
                         border={4}
                         pb={5}
-                        borderColor={Color.APPLE}
-                        color={Color.DARK_BLUE}>
+                        borderColor={Color.PRIMARY}
+                        color={Color.ACTIVE_COLOR}>
                         Sign In
                       </Label>
                       <TouchableOpacity
@@ -142,7 +142,7 @@ export class SignIn extends Component {
                           large
                           ph={30}
                           bolder
-                          color={Color.DARK_MODERATE_BLUE}>
+                          color={Color.INACTIVE_COLOR}>
                           Sign Up
                         </Label>
                       </TouchableOpacity>
@@ -152,7 +152,7 @@ export class SignIn extends Component {
                       iconName="email"
                       placeholder="Enter email"
                       keyboardType="email-address"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text => this.setState({email: text})}
                     />
                     {this.state.emailError != null ? (
@@ -165,7 +165,7 @@ export class SignIn extends Component {
                     <InputContainer
                       iconName="lock"
                       placeholder="Enter password"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text => this.setState({password: text})}
                       extraIconName={this.state.toggleIcon}
                       secureText={this.state.isSecurePassword}
@@ -190,7 +190,7 @@ export class SignIn extends Component {
                       onPress={() =>
                         this.props.navigation.navigate(Routes.ForgotPassword)
                       }>
-                      <Label small color={Color.DARK_BLUE} align="right" me={5}>
+                      <Label small color={Color.ACTIVE_COLOR} align="right" me={5}>
                         Forgot Password ?
                       </Label>
                     </TouchableOpacity>

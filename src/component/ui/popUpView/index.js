@@ -33,8 +33,8 @@ export default class PopUpView extends React.Component {
               <View style={{ width: ThemeUtils.relativeWidth(32) }}>
                 <RoundButton
                   backgroundColor={Color.WHITE}
-                  borderColor={Color.PRIMARY}
-                  textColor={Color.PRIMARY}
+                  borderColor={Color.PRIMARY_DARK}
+                  textColor={Color.PRIMARY_DARK}
                   click={() => {
                     this.props.onClickButton2()
                   }}

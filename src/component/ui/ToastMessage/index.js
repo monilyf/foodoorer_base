@@ -15,8 +15,8 @@ class ToastMessage extends Component {
             {/* <View style={styles.column}></View> */}
             <View style={styles.content}>
               <View style={styles.toastMsg}>
-                <Icon name="alert-circle" size={20} color={Color.DARK_BLUE} />
-                <Label color={Color.DARK_BLUE} ms={12}>
+                <Icon name="alert-circle" size={20} color={Color.PRIMARY_DARK} />
+                <Label color={Color.PRIMARY_DARK} ms={12}>
                   {this.props.text}
                 </Label>
               </View>

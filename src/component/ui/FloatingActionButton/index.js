@@ -48,7 +48,7 @@ const FloatingActionButton = props => {
 
 FloatingActionButton.defaultProps = {
   size: 50,
-  color: Color.PRIMARY,
+  color: Color.PRIMARY_DARK,
   icon: 'home',
   iconColor: Color.WHITE,
   iconSize: 20,

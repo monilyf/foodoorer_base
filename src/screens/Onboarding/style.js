@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
     width: 40,
     height: 40,
-    backgroundColor: Color.APPLE,
+    backgroundColor: Color.PRIMARY,
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.DARK_GRAY,
   },
   activeDotStyle: {
-    backgroundColor: Color.APPLE,
+    backgroundColor: Color.PRIMARY,
   },
   icon: {
     fontSize: 25,

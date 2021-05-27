@@ -16,11 +16,11 @@ const HomeNavigator = () => {
       creenOptions={{
         tabBarOptions: {
           style: {
-            backgroundColor: Color.APPLE,
+            backgroundColor: Color.PRIMARY,
           },
         },
       }}
-      activeColor={Color.DARK_BLUE}
+      activeColor={Color.ACTIVE_COLOR}
       inactiveColor={Color.DARK_GRAYISH_BLUE}>
       <Tab.Screen
         name="Explore"

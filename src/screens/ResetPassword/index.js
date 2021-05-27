@@ -99,7 +99,7 @@ export class ResetPassword extends Component {
                 </Animatable.View>
                 <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
                   <View style={CommonStyle.boxContainer}>
-                    <Label color={Color.PRIMARY} align="center" xlarge>
+                    <Label color={Color.PRIMARY_DARK} align="center" xlarge>
                       Reset Password
                     </Label>
 
@@ -111,7 +111,7 @@ export class ResetPassword extends Component {
                     <InputContainer
                       iconName="lock"
                       placeholder="Enter password"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text => this.setState({password: text})}
                       extraIconName={this.state.toggleIcon1}
                       secureText={this.state.isSecurePassword}
@@ -129,7 +129,7 @@ export class ResetPassword extends Component {
                     <InputContainer
                       iconName="lock"
                       placeholder="Re-type password"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text =>
                         this.setState({confirmPassword: text})
                       }

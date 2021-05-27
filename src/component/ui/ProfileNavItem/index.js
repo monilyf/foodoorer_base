@@ -19,7 +19,7 @@ const ProfileNavItem = (props) => {
         <Image
           source={props.iconPath}
         />
-        <Label color={Color.PRIMARY} ms={25}>
+        <Label color={Color.PRIMARY_DARK} ms={25}>
           {props.label}
         </Label>
       </View>

@@ -80,7 +80,7 @@ Label.defaultProps = {
     bolder: false,
     lighter: false,
     light: false,
-    color: Color.TEXT_PRIMARY,
+    color: Color.PRIMARY_DARK,
     roboto_regular: false,
     roboto_medium: false,
     align: "left",
@@ -92,7 +92,7 @@ Label.defaultProps = {
     pb:0,
     singleLine: false,
     border:0,
-    borderColor:Color.PRIMARY,
+    borderColor:Color.PRIMARY_DARK,
     letterSpacing:0
 };
 Label.propTypes = {

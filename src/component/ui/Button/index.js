@@ -70,7 +70,7 @@ const Button = props => {
 Button.defaultProps = {
   ...TouchableHighlight.defaultProps,
   textColor: Color.WHITE,
-  backgroundColor: Color.PRIMARY,
+  backgroundColor: Color.PRIMARY_DARK,
   btn_xs: false,
   btn_sm: false,
   btn_lg: false,

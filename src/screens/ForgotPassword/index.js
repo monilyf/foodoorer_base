@@ -74,7 +74,7 @@ export class ForgotPassword extends Component {
                 </Animatable.View>
                 <Animatable.View animation="fadeInUpBig" iterationDelay={400}>
                   <View style={CommonStyle.boxContainer}>
-                    <Label color={Color.PRIMARY} align="center" xlarge>
+                    <Label color={Color.PRIMARY_DARK} align="center" xlarge>
                       Forgot your password?
                     </Label>
 
@@ -86,7 +86,7 @@ export class ForgotPassword extends Component {
                     <InputContainer
                       iconName="email"
                       placeholder="Enter email"
-                      iconColor={Color.PRIMARY}
+                      iconColor={Color.PRIMARY_DARK}
                       onChangeText={text => this.setState({email: text})}
                       keyboardType="email-address"
                     />

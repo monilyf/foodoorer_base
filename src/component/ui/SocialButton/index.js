@@ -14,7 +14,7 @@ const SocialButton = props => {
   return (
     <TouchableOpacity style={styles.btnPrimary} onPress={onClick}>
       <Image style={styles.btnImage} source={props.image} />
-      <Label color={Color.PRIMARY} bolder ph={20} small>
+      <Label color={Color.PRIMARY_DARK} bolder ph={20} small>
         {props.buttonText}
       </Label>
     </TouchableOpacity>
