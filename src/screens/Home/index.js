@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
-import {FlatList, Image, SafeAreaView, View} from 'react-native';
-import {Label, StatusBars,ContentHeader,CategoryCard,ItemCard,RestaurantCard} from '../../component';
+import {FlatList, SafeAreaView, View} from 'react-native';
+import {StatusBars,ContentHeader,CategoryCard,ItemCard,RestaurantCard} from '../../component';
 import Color from '../../utils/Color';
 import styles from './style';
-import ThemeUtils from '../../utils/ThemeUtils';
-import Icon from 'react-native-vector-icons/Feather';
-import CommonStyle from '../../utils/CommonStyle';
+
 
 const category_Item = [
   {id: 1, title: 'Burger', image: require('../../assets/images/home_screen/burger.jpg')},
